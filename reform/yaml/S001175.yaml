@@ -1,0 +1,100 @@
+bioguide: S001175
+contact_form:
+  method: post
+  action: "/htbin/formproc/email.txt%26display%3D/contact/email/email-thank-you%26nobase%26fpGetVer%3D2"
+  steps:
+    - visit: "https://speier.house.gov/contact"
+    - fill_in:
+        - name: required-prefix
+          selector: "#emailForm input[name='required-prefix']"
+          value: $NAME_PREFIX
+          required: true
+        - name: required-first
+          selector: "#firstname"
+          value: $NAME_FIRST
+          required: true
+        - name: required-last
+          selector: "#lastname"
+          value: $NAME_LAST
+          required: true
+        - name: required-address
+          selector: "#addr1"
+          value: $ADDRESS_STREET
+          required: true
+        - name: required-city
+          selector: "#city"
+          value: $ADDRESS_CITY
+          required: true
+        - name: zip5
+          selector: "#zip5"
+          value: $ADDRESS_ZIP5
+          required: true
+        - name: zip4
+          selector: "#zip4"
+          value: $ADDRESS_ZIP4
+          required: true
+        - name: required-email
+          selector: "#email"
+          value: $EMAIL
+          required: true
+        - name: required-phone
+          selector: "#required-phone"
+          value: $PHONE
+          required: true
+        - name: required-message
+          selector: "#required-message"
+          value: $MESSAGE
+          required: true
+    - select:
+        - name: required-issue
+          selector: "#emailForm select[name='required-issue']"
+          value: $TOPIC
+          required: true
+          options:
+            Agriculture: AGR
+            Animals: ANI
+            "Arts\_": ART
+            Budget: BUD
+            Casework: CAS
+            Civil Rights: "CIV "
+            Credit: CRE
+            Defense: DEF
+            Economy: ECO
+            Education: EDU
+            Elections: ELE
+            Energy: ENE
+            Environment: ENV
+            Foreign Affairs: FOR
+            Government Reform: GOV
+            Health: HEA
+            Homeland Security: HOM
+            Housing: HOU
+            Immigration: IMM
+            Judiciary: JUD
+            Labor: LAB
+            Postal Service: POS
+            Science: SCI
+            Small Business: SMB
+            Social Security: SOC
+            Telecommunications: TEL
+            Taxes: TAX
+            "Tours & Flags": TOU
+            Trade: TRD
+            Transportation: TRA
+            Veterans: VET
+            Women: WOM
+            Other: OTH
+        - name: required-response
+          selector: "#emailForm select[name='required-response']"
+          value: "Y"
+          required: true
+          options:
+            "Yes": "Y"
+            "No": "no"
+    - click_on:
+        - selector: "#submit"
+  success:
+    headers:
+      status: 200
+    body:
+      contains: your message has been sent

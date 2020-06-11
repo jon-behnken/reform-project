@@ -1,0 +1,92 @@
+bioguide: G000555
+contact_form:
+  method: post
+  action: https://www.gillibrand.senate.gov/contact/email-me
+  steps:
+    - visit: "https://www.gillibrand.senate.gov/contact/email-me"
+    - javascript:
+        - value: "Array.prototype.forEach.call(document.querySelectorAll('style,[rel=\"stylesheet\"],[type=\"text/css\"]'), function(element){ try{ element.parentNode.removeChild(element) } catch(err){} });"
+    - find:
+        - selector: "#input-A5AD3024-5056-A066-60BD-27089EC367B6"
+    - fill_in:
+        - name: input_A5AD3024-5056-A066-60BD-27089EC367B6
+          selector: "#input-A5AD3024-5056-A066-60BD-27089EC367B6"
+          value: $NAME_FIRST
+          required: true
+        - name: input_A5AD2D97-5056-A066-609C-2BE7421DED54
+          selector: "#input-A5AD2D97-5056-A066-609C-2BE7421DED54"
+          value: $NAME_LAST
+          required: true
+        - name: input_A5AD3726-5056-A066-6040-8733FE9F1C74
+          selector: "#input-A5AD3726-5056-A066-6040-8733FE9F1C74"
+          value: $ADDRESS_STREET
+          required: true
+        - name: input_A5AD3598-5056-A066-602E-1929FB800695
+          selector: "#input-A5AD3598-5056-A066-602E-1929FB800695"
+          value: $ADDRESS_CITY
+          required: true
+        - name: input_A5AD3404-5056-A066-6010-890AB748A186
+          selector: "#input-A5AD3404-5056-A066-6010-890AB748A186"
+          value: $ADDRESS_ZIP5
+          required: true
+        - name: input_A5AD3157-5056-A066-6044-877D1CC4A989
+          selector: "#input-A5AD3157-5056-A066-6044-877D1CC4A989"
+          value: $PHONE
+          required: true
+        - name: input_A5AD3647-5056-A066-6062-44B01FB1AAD6
+          selector: "#email"
+          value: $EMAIL
+          required: true
+        - name: input_A5AD3307-5056-A066-6029-D7EBFF775924
+          selector: "#input-A5AD3307-5056-A066-6029-D7EBFF775924"
+          value: $MESSAGE
+          required: true
+    - choose:
+        - name: "input_A5AD3178-5056-A066-601C-988363C101B2"
+          selector: "input[type='radio']"
+          value: $TOPIC
+          required: true
+          options:
+              Agriculture/Nutrition: 8B508D83-5056-A066-604B-8ACA4ACA9E61
+              Animals Issues: 8B508DAD-5056-A066-60C7-12F5A25B5C38
+              Arts & Humanities: 8B508DD7-5056-A066-60A5-56679973688C
+              Banking/Finance: 8B508E04-5056-A066-60C5-BB390D1B8FD2
+              Campaign/Election Reform: 8B508E2B-5056-A066-6018-C9F7BED4F482
+              Children: 8B508E54-5056-A066-603F-017E57F7A2DA
+              Civil/LGBT Rights: 8B508E7B-5056-A066-60A6-C5B6FEAD2816
+              Defense/Military: 8B508EA6-5056-A066-600F-7D35BCB3CBC2
+              Economy: 8B508ED1-5056-A066-604F-660367E7DF79
+              Education: 8B508EFA-5056-A066-6077-313D40F6D3EC
+              Energy: 8B508F20-5056-A066-60F5-D480AF66183F
+              Environment: 8B508F49-5056-A066-60CC-DD2DEA028A86
+              Foreign Relations/International Affairs: 8B508F73-5056-A066-600F-DE52C49887F4
+              Government Reform: 8B508F9C-5056-A066-60D5-8EC04E494A7D
+              Gun Control: 8B508FC6-5056-A066-60CA-00C3085277F2
+              Health/Healthcare: 8B508FF0-5056-A066-6087-4C5E9411CE7C
+              Homeland Security: 8B509018-5056-A066-6010-666E310FDC19
+              Housing: 8B50903F-5056-A066-60DF-244C577EB87C
+              Immigration: 8B509065-5056-A066-60F0-1175699E3164
+              Judiciary: 8B50908E-5056-A066-609A-7F34BE3FC0B6
+              Labor & Pensions: 8B5090BB-5056-A066-60B9-7368D3695B78
+              Medicare/Medicaid: 8B5090E7-5056-A066-6037-6D8A4236C686
+              Science/Technology/Telecommunications: 8B50910F-5056-A066-609F-438B93810977
+              Social Security: 8B509139-5056-A066-6052-6A2757045327
+              Taxes: 8B509164-5056-A066-6023-8D8C1C6C6E5C
+              Trade: 8B50918E-5056-A066-601C-9A087613B4A9
+              Transportation: 8B5091B8-5056-A066-6044-60A67672C906
+              Veterans: 8B5091DF-5056-A066-6066-F61CD062C23A
+              Welfare: 8B509206-5056-A066-60FA-A8D48F121E84
+              Women's Issues: 8B509233-5056-A066-6015-F27764BC7455
+    - javascript:
+        - value: document.querySelector("#input-A5AD3307-5056-A066-6029-D7EBFF775924").value = document.querySelector("#input-A5AD3307-5056-A066-6029-D7EBFF775924").value.replace(/"/g, '');
+    - javascript:
+        - value: "document.querySelector('input.btn').click()"
+    - wait:
+        - value: 3
+    - find:
+        - selector: "#form-A5AD2BDE-5056-A066-60D8-0ADE8864FC1C.amend-form-container h1"
+  success:
+    headers:
+      status: 200
+    body:
+      contains: Thank you for contacting my office

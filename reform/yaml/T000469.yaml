@@ -1,0 +1,85 @@
+bioguide: T000469
+contact_form:
+  method: get
+  action: /forms/writeyourrep/
+  steps:
+    - visit: "https://tonkoforms.house.gov/contact/"
+    - fill_in:
+        - name: zip5
+          selector: "form.zipform input[name='zip5'][size='6']"
+          value: $ADDRESS_ZIP5
+          required: true
+        - name: zip4
+          selector: "form.zipform input[name='zip4'][size='5']"
+          value: $ADDRESS_ZIP4
+          required: true
+    - click_on:
+        - value: Submit
+          selector: "form.zipform input[type='submit'][value='Submit']"
+    - find:
+        - selector: '#ctl00_ctl17_FirstName'
+    - javascript:
+        - value: "document.getElementById('header').remove()"
+    - fill_in:
+        - name: ctl00$ctl17$FirstName
+          selector: "#ctl00_ctl17_FirstName"
+          value: $NAME_FIRST
+          required: true
+        - name: ctl00$ctl17$LastName
+          selector: "#ctl00_ctl17_LastName"
+          value: $NAME_LAST
+          required: true
+        - name: ctl00$ctl17$Street
+          selector: "#ctl00_ctl17_Street"
+          value: $ADDRESS_STREET
+          required: true
+        - name: ctl00$ctl17$City
+          selector: "#ctl00_ctl17_City"
+          value: $ADDRESS_CITY
+          required: true
+        - name: ctl00$ctl17$Zip
+          selector: "#ctl00_ctl17_Zip"
+          value: $ADDRESS_ZIP5
+          required: true
+        - name: ctl00$ctl17$Email
+          selector: "#ctl00_ctl17_Email"
+          value: $EMAIL
+          required: true
+        - name: ctl00$ctl17$Subject
+          selector: "#ctl00_ctl17_Subject"
+          value: $SUBJECT
+          required: true
+        - name: ctl00$ctl17$Body
+          selector: "#ctl00_ctl17_Body"
+          value: $MESSAGE
+          required: true
+    - select:
+        - name: ctl00$ctl17$PrefixList
+          selector: "#ctl00_ctl17_PrefixList"
+          value: $NAME_PREFIX
+          required: true
+          options:
+            - Mr.
+            - Mrs.
+            - Dr.
+            - Ms.
+            - The Reverend
+            - Pastor
+            - The Honorable
+            - Rabbi
+            - Sister
+            - Father
+    - click_on:
+        - selector: "label[for='ctl00_ctl17_ReplyChoice_0']"
+    - javascript:
+        - value: document.querySelector("#ctl00_ctl17_Body").value = document.querySelector("#ctl00_ctl17_Body").value.replace(/"/g, '');
+    - recaptcha:
+        - value: true
+    - click_on:
+        - value: Submit
+          selector: "#ctl00_ctl17_SubmitButton"
+  success:
+    headers:
+      status: 200
+    body:
+      contains: Thank you

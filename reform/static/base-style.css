@@ -1,0 +1,41 @@
+body{
+  font-family: 'Roboto Mono', monospace;
+  background: #fff6f0;
+  margin: 0;
+  padding: 10px;
+}
+
+nav{
+  text-align: center;
+}
+
+h1{
+  margin-bottom: 5px;
+}
+
+ul{
+  margin-top: 0px;
+  list-style-type: none;
+  width: auto;
+  padding: 0;
+  overflow: hidden;
+  display: inline-block;
+}
+
+li{
+  float: left;
+  padding: 10px;
+}
+
+li a{
+  text-decoration: none;
+  color: black;
+}
+
+li:hover{
+  background: #eee;
+}
+
+li a:hover{
+  font-weight: bolder;
+}

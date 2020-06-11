@@ -1,0 +1,134 @@
+bioguide: S001194
+contact_form:
+  method: post
+  action: /contact
+  steps:
+    - visit: "https://www.schatz.senate.gov/contact"
+    - select:
+        - name: actions
+          selector: "#actions"
+          value: opinion
+          required: true
+          options:
+            "--Select an Option--": select
+            Request help with a federal Agency: federal_agency
+            Schedule a Meeting with Senator Schatz or Staff: meeting
+            Request a Flag to be flown over the Capitol: flag
+            Request help with a tour of the D.C. area: tours
+            Apply for an Internship or Academy Nomination: students
+            Share your opinion or comments on bills or other issues: opinion
+    - wait:
+        - value: 3
+    - fill_in:
+        - name: fname
+          selector: "#fname"
+          value: $NAME_FIRST
+          required: true
+        - name: lname
+          selector: "#lname"
+          value: $NAME_LAST
+          required: true
+        - name: mailing_streetAddress1
+          selector: "#mailing_streetAddress1"
+          value: $ADDRESS_STREET
+          required: true
+        - name: mailing_city
+          selector: "#mailing_city"
+          value: $ADDRESS_CITY
+          required: true
+        - name: mailing_zipCode
+          selector: "#mailing_zipCode"
+          value: $ADDRESS_ZIP5
+          required: true
+        - name: email_address
+          selector: "#email"
+          value: $EMAIL
+          required: true
+        - name: verify_email
+          selector: "#verify_email"
+          value: $EMAIL
+          required: true
+        - name: message
+          selector: "#message"
+          value: $MESSAGE
+          required: true
+    - select:
+        - name: salutation
+          selector: "#salutation"
+          value: $NAME_PREFIX
+          required: true
+          options:
+            - Mr.
+            - Ms.
+            - Mrs.
+            - Miss
+            - Dr.
+        - name: subject
+          selector: "#subject"
+          value: $TOPIC
+          required: true
+          options:
+            Agriculture: AGR
+            Animal Welfare: ANIMAL
+            Arts and Humanities: ART
+            Aviation: AVIATION
+            Banking: BANKS
+            Budget: BUD
+            Census: CENSUS
+            Children/Family/Adoption: FAMILY
+            Civil Rights: CIV
+            Technology/Telecommunications: COMM
+            Defense: DEF
+            Education: EDU
+            Elections and Campaign Finance and Congress: ELECT
+            Energy: ENE
+            Environment: ENV
+            Federal Workforce: FEDWORK
+            Foreign Relations: FORAFF
+            Grants: GRANTS
+            Gun Control: GUN
+            Native Hawaiians: HAWAIIAN
+            Health: HEA
+            Help With a Federal Agency: CASEWORK
+            Homeland Security: HOM
+            Immigration: IMM
+            Native Americans and Indigenous Peoples: INDIAN
+            Intellectual Property: INT PROP
+            Intelligence: INTEL
+            Judiciary: JUD
+            Labor: LABOR
+            Maritime: MARITIME
+            Natural Resources: NATURALRES
+            Nutrition: NUTRITION
+            Oceans and Fisheries: OCEANS
+            Postal Service: POSTAL
+            Religion: RELIGION
+            Science and Space: SCIENCE
+            Seniors: AGE
+            Small Business and Economic Development: BUS
+            Social Security: SSEC
+            Tax: TAX
+            Territories and Insular Affairs: TER
+            Tourism: TOURISM
+            "Transportation & Infrastructure": TRA
+            Trade: TRADE
+            Veterans: VET
+            Welfare: WEL
+            "Women's Issues": WOMEN
+    - check:
+        - name: response
+          selector: "#response_y"
+          value: "Y"
+          required: true
+    - javascript:
+        - value: document.querySelector("#message").value = document.querySelector("#message").value.replace(/"/g, '');
+    - click_on:
+        - value: Send
+          selector: "#side-search-btn"
+    - wait:
+        - value: 3
+  success:
+    headers:
+      status: 200
+    body:
+      contains: Thank you

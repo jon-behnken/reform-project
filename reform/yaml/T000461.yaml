@@ -1,0 +1,107 @@
+bioguide: T000461
+contact_form:
+  method: post
+  action: /?p=contact
+  steps:
+    - visit: "https://www.toomey.senate.gov/?p=contact"
+    - javascript:
+        - value: "Array.prototype.forEach.call(document.querySelectorAll('style,[rel=\"stylesheet\"],[type=\"text/css\"]'), function(element){ try{ element.parentNode.removeChild(element) } catch(err){} });"
+    - fill_in:
+        - name: FIRST
+          selector: "input[name='FIRST']"
+          value: $NAME_FIRST
+          required: true
+        - name: LAST
+          selector: "input[name='LAST']"
+          value: $NAME_LAST
+          required: true
+        - name: ADDR1
+          selector: "input[name='ADDR1']"
+          value: $ADDRESS_STREET
+          required: true
+        - name: ADDR2
+          selector: "input[name='ADDR2']"
+          value: $ADDRESS_STREET_2
+          required: false
+        - name: CITY
+          selector: "input[name='CITY']"
+          value: $ADDRESS_CITY
+          required: true
+        - name: ZIP
+          selector: "input[name='ZIP']"
+          value: $ADDRESS_ZIP5
+          required: true
+        - name: PHONE
+          selector: "input[name='PHONE']"
+          value: $PHONE
+          required: true
+        - name: EMAIL
+          selector: "input[name='EMAIL']"
+          value: $EMAIL
+          required: true
+        - name: vemail
+          selector: "input[name='vemail']"
+          value: $EMAIL
+          required: true
+        - name: msgsubject
+          selector: "input[name='msgsubject']"
+          value: $SUBJECT
+          required: true
+        - name: MSG
+          selector: "textarea[name='MSG']"
+          value: $MESSAGE
+          required: true
+    - select:
+        - name: TOPIC
+          selector: "select[name='TOPIC']"
+          value: $TOPIC
+          required: true
+          options:
+            2nd Amendment: 2nd Amendment
+            Abortion: Abortion
+            Academy Nominations: Academy Nominations
+            Agriculture and Nutrition: Agriculture and Nutrition
+            Animal Welfare: Animal Welfare
+            Armed Services: Armed Services
+            Banking and Financial Services: Banking and Financial Services
+            Budget: Budget
+            Census: Census
+            Economy: Economy
+            Education: Education
+            Energy: Energy
+            Environment: Environment
+            Foreign Relations: Foreign Relations
+            Grants: Grants
+            Healthcare: Healthcare
+            Housing: Housing
+            Immigration: Immigration
+            Internet/Telecommunications: Internet/Telecommunications
+            Jobs and Labor: Jobs and Labor
+            Judiciary Issues: Judiciary Issues
+            Medicaid: Medicaid
+            National Security: National Security
+            Postal Service: Postal Service
+            Social Security and Medicare: Social Security and Medicare
+            Taxes: Taxes
+            Tour Request: Tour Request
+            Trade: Trade
+            Transportation: Transportation
+            Veterans: Veterans
+    - javascript:
+        - value: document.querySelector("textarea[name='MSG']").value = document.querySelector("textarea[name='MSG']").value.replace(/"/g, '');
+    - javascript:
+        - value: document.querySelector("input.btn-primary").disabled = false;
+    - javascript:
+      - value: document.querySelector("#g-recaptcha-response").style.display = "block";
+    - recaptcha:
+        - value: true
+    - javascript:
+        - value: document.querySelector("input.btn-primary").click();
+    - find:
+        - selector: "p"
+          value: "Thank you!"
+  success:
+    headers:
+      status: 200
+    body:
+      contains: Your message has been sent.

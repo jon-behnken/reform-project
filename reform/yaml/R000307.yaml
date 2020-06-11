@@ -1,0 +1,107 @@
+bioguide: R000307
+contact_form:
+  method: post
+  action: ""
+  steps:
+    - visit: "https://www.roberts.senate.gov/public/index.cfm/emailpat"
+    - fill_in:
+        - name: field_7BBAD001-4221-4CB0-B7BD-B1ADC5E3A379
+          selector: "#field_7BBAD001-4221-4CB0-B7BD-B1ADC5E3A379"
+          value: $NAME_FIRST
+          required: true
+        - name: field_08788E58-2487-4D39-BD3E-99B47A7DB6B3
+          selector: "#field_08788E58-2487-4D39-BD3E-99B47A7DB6B3"
+          value: $NAME_LAST
+          required: true
+        - name: field_6E92B6CE-26EA-4520-A313-FB9FB4554935
+          selector: "#field_6E92B6CE-26EA-4520-A313-FB9FB4554935"
+          value: $ADDRESS_STREET
+          required: true
+        - name: field_A10AF97B-AC6C-4B88-8BFD-0C8E6A2EF117
+          selector: "#field_A10AF97B-AC6C-4B88-8BFD-0C8E6A2EF117"
+          value: $ADDRESS_CITY
+          required: true
+        - name: field_AEA5B2A7-06B4-4AF8-933E-2B74AF558CFB
+          selector: "#field_AEA5B2A7-06B4-4AF8-933E-2B74AF558CFB"
+          value: $ADDRESS_ZIP5
+          required: true
+        - name: field_F7677061-8F71-4136-B3B2-ED7BCC421D95
+          selector: "#field_F7677061-8F71-4136-B3B2-ED7BCC421D95"
+          value: $EMAIL
+          required: true
+        - name: field_D48CC108-7CD0-4E71-ABFE-3A90676B7363
+          selector: "#field_D48CC108-7CD0-4E71-ABFE-3A90676B7363"
+          value: $EMAIL
+          required: true
+        - name: field_6D262F00-EBE4-49B9-AB23-0C2C3F61225C
+          selector: "#field_6D262F00-EBE4-49B9-AB23-0C2C3F61225C"
+          value: $MESSAGE
+          required: true
+    - select:
+        - name: field_9424CC8E-5A2F-4871-BC49-66218298A3DA
+          selector: "#field_9424CC8E-5A2F-4871-BC49-66218298A3DA"
+          value: $NAME_PREFIX
+          required: true
+          options:
+            - Mr.
+            - Ms.
+            - Mrs.
+            - Dr.
+        - name: field_9E46D42D-A8A8-4014-AF7C-A316AA230D9F
+          selector: "#field_9E46D42D-A8A8-4014-AF7C-A316AA230D9F"
+          value: $TOPIC
+          required: true
+          options:
+            Abortion: AB
+            Agriculture: AG
+            Banking: BA
+            Budget: BUD
+            Communications: TELE
+            Cybersecurity: CY
+            Disability: DIS
+            Defense: DEF
+            Economy: EC
+            Education: EDU
+            Energy: ENE
+            Environment: ENV
+            FDA: FDA
+            FEMA: FEMA
+            Foreign Affairs: FOR
+            Government Affairs: GOV
+            Gun Control: GUN
+            Healthcare: HC
+            Housing: HOU
+            Human Rights: HUMRTS
+            Interior : INTR
+            Immigration: IMM
+            Judicary,Violence: JUD
+            Labor: LAB
+            Native American Issues: NAT
+            National Security: HOM
+            Pensions: PEN
+            Postal Issues: PO
+            Regulatory Reform: REG
+            Seniors: SEN
+            Social Security: SS
+            Small Business: SB
+            Taxes: TAX
+            Space and Technology: TECH
+            Terrorism: HOM
+            Trade: TR
+            Transportation: TRAN
+            Veterans: VET
+            Water: WATR
+            Welfare: WEL
+            Other: OTH
+    - javascript:
+        - value: "document.querySelector('#g-recaptcha-response').style.cssText = 'display: block; margin-top: 5em;';"
+    - recaptcha:
+        - value: true
+    - click_on:
+        - value: "Submit"
+          selector: "input.btn-primary"
+  success:
+    headers:
+      status: 200
+    body:
+      contains: Thank you for expressing your views.

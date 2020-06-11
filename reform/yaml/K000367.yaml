@@ -1,0 +1,97 @@
+bioguide: K000367
+contact_form:
+  method: post
+  action: ""
+  steps:
+    - visit: "http://www.klobuchar.senate.gov/public/email-amy"
+    - fill_in:
+        - name: field_C52E1162-F258-4E3F-9F22-A054DA714390
+          selector: "#field_C52E1162-F258-4E3F-9F22-A054DA714390"
+          value: $NAME_FIRST
+          required: true
+        - name: field_DD82B60D-4635-4434-93FF-892B72B9D52B
+          selector: "#field_DD82B60D-4635-4434-93FF-892B72B9D52B"
+          value: $NAME_LAST
+          required: true
+        - name: field_9CC52F34-5547-46D2-845B-0CE277324714
+          selector: "#field_9CC52F34-5547-46D2-845B-0CE277324714"
+          value: $ADDRESS_STREET
+          required: true
+        - name: field_A96C76CA-3B30-4134-A9BA-C5695AEAA16F
+          selector: "#field_A96C76CA-3B30-4134-A9BA-C5695AEAA16F"
+          value: $ADDRESS_CITY
+          required: true
+        - name: field_6FD17215-4484-496C-8859-92698C465F01
+          selector: "#field_6FD17215-4484-496C-8859-92698C465F01"
+          value: $ADDRESS_ZIP5
+          required: true
+        - name: field_352A82B8-7386-4C46-96FF-E96E2A164C11
+          selector: "#field_352A82B8-7386-4C46-96FF-E96E2A164C11"
+          value: $EMAIL
+          required: true
+        - name: field_675A9F22-38AE-4EF6-97D8-09FC5F57B19E
+          selector: "#field_675A9F22-38AE-4EF6-97D8-09FC5F57B19E"
+          value: $SUBJECT
+          required: true
+        - name: field_1A032E33-7721-4CE2-AD9B-2ECAFE076D8C
+          selector: "#field_1A032E33-7721-4CE2-AD9B-2ECAFE076D8C"
+          value: $MESSAGE
+          required: true
+          options:
+            max_length: 5000
+    - select:
+        - name: field_14306BE6-1D30-4925-AFBA-1BC433F550D7
+          selector: "#field_14306BE6-1D30-4925-AFBA-1BC433F550D7"
+          value: $TOPIC
+          required: true
+          options:
+            - Abortion
+            - Academy Nominations
+            - Agriculture
+            - Animal Welfare
+            - Arts and Humanities
+            - Banking
+            - Budget
+            - Businesses
+            - Commerce
+            - Communications
+            - Crime and Judiciary
+            - Civil Rights
+            - Defense
+            - Economy
+            - Education
+            - Energy
+            - Environment
+            - Federal Government Agencies
+            - Financial Crisis
+            - Foreign Affairs
+            - Gas Prices
+            - Government Reform
+            - Health/Healthcare
+            - Housing
+            - Immigration/Visas
+            - Internships
+            - Internal Revenue Service
+            - Iraq/Middle East
+            - Labor
+            - Native Americans
+            - Press Request
+            - Scheduling Request
+            - Small Business
+            - Social Security
+            - Taxes
+            - Trade
+            - Transportation
+            - Veterans Affairs
+            - Welfare
+            - Other
+    - javascript:
+        - value: document.querySelector("#field_1A032E33-7721-4CE2-AD9B-2ECAFE076D8C").value = document.querySelector("#field_1A032E33-7721-4CE2-AD9B-2ECAFE076D8C").value.replace(/"/g, '');
+    - click_on:
+        - value: Submit
+          selector: input.btn.btn-primary
+  success:
+    headers:
+      status: 200
+    body:
+      contains: Thank you

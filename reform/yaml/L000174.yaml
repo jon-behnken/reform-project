@@ -1,0 +1,129 @@
+bioguide: L000174
+contact_form:
+  method: post
+  action: "https://www.leahy.senate.gov/contact/"
+  steps:
+    - visit: "https://www.leahy.senate.gov/contact/"
+    - find:
+        - selector: "#input-36F9116D-5056-A066-6055-B856B7975A8D"
+    - fill_in:
+        - name: input_36F9116D-5056-A066-6055-B856B7975A8D
+          selector: "#input-36F9116D-5056-A066-6055-B856B7975A8D"
+          value: $NAME_FIRST
+          required: true
+        - name: input_36F9168F-5056-A066-6010-D50B3E4EA5CA
+          selector: "#input-36F9168F-5056-A066-6010-D50B3E4EA5CA"
+          value: $NAME_LAST
+          required: true
+        - name: input_36D0D7B4-5056-A066-604B-C5784DE1329E
+          selector: "#input-36D0D7B4-5056-A066-604B-C5784DE1329E"
+          value: $ADDRESS_STREET
+          required: true
+        - name: input_36D0D8E1-5056-A066-6088-B0E287342B26
+          selector: "#input-36D0D8E1-5056-A066-6088-B0E287342B26"
+          value: $ADDRESS_CITY
+          required: true
+        - name: input_36D0DA1C-5056-A066-605E-9CA59C0D0E35
+          selector: "#input-36D0DA1C-5056-A066-605E-9CA59C0D0E35"
+          value: $ADDRESS_ZIP5
+          required: true
+        - name: input_36D667AA-5056-A066-6035-8576D66D00F9
+          selector: "#email"
+          value: $EMAIL
+          required: true
+        - name: input_36D6681A-5056-A066-60DC-988EFD5753D6
+          selector: "#input-36D6681A-5056-A066-60DC-988EFD5753D6"
+          value: $EMAIL
+          required: true
+        - name: input_36D95985-5056-A066-6035-E42D9CB11A0E
+          selector: "#input-36D95985-5056-A066-6035-E42D9CB11A0E"
+          value: $PHONE
+          required: true
+        - name: input_36E62F57-5056-A066-60BF-78ADF9F5676E
+          selector: "#input-36E62F57-5056-A066-60BF-78ADF9F5676E"
+          value: $MESSAGE
+          required: true
+    - select:
+        - name: input_36C9576F-5056-A066-6022-2CCEB276F085
+          selector: "#salutations"
+          value: $NAME_PREFIX
+          required: true
+          options:
+            - Mr.
+            - Ms.
+            - Mrs.
+            - Miss
+            - Mr. and Mrs.
+            - Dr.
+            - Dr. and Mrs.
+            - Dr. and Mr.
+            - Mr. and Mr.
+            - Mrs. and Mrs.
+            - Ms. and Ms.
+            - Other
+        - name: input_36E22353-5056-A066-60EA-9A7BCE98E4DD
+          selector: "#issue"
+          value: $TOPIC
+          required: true
+          options:
+            Agriculture: AGRICULTURE
+            Animals: AN
+            Arts &amp; Humanities: ARTS
+            Banking &amp; Financial Services: BANK
+            Budget: BUDGET GENERAL
+            Business &amp; Commerce: BUS
+            Civil Rights: CIVIL_RIGHTS
+            Climate Change: CLIMATE CHANGE
+            Crime: CRIME
+            Dairy: DAIRY
+            Defense/Military: DEFENSE/MILITARY
+            Detainee Treatment: TORTURE
+            Disability Issues: DISABILITIES
+            Drones: DRONES
+            Economy: ECONOMY
+            Education: ED
+            Elections &amp; Voting Rights: ELECTIONS
+            Employment, Labor &amp; Pensions: LAB
+            Energy: EN
+            Environment: ENVIRONMENT
+            Foreign Policy: FR
+            Genetically Engineered Food (GMOs): GENETICENGINEERING
+            Gun Control &amp; Second Amendment Rights: GUN CONTROL
+            Health: HEALTH
+            Homeland Security: HLS
+            Housing: HOUSING
+            Human Services &amp; Welfare: HMS
+            Hurricane Irene: FEMA
+            Immigration: IMMIGRATION
+            Judicial Nominations: NOMINATIONS
+            Law Enforcement: LAW ENFORCEMENT
+            Medicare/Medicaid: MEDICARE
+            Other: OTHER
+            Patents &amp; Copyright: COPYRIGHT
+            Political Parties and Campaign Finance Reform: POLITICS
+            Prescription Drugs: PRESCRIPTION DRUGS
+            Privacy: PRIVACY
+            Seniors: SENIORS
+            Small Business: BUSINESS
+            Social Security: SS
+            Space/NASA: NASA
+            Taxation: TAX
+            Telecommunications: TELECOMM
+            Trade: TRD
+            Transportation: TRANSPORTATION
+            Veterans Affairs: VETERANS
+            Violence Against Women Act: DOMESTIC VIOLENCE
+            Women &amp; Children: WOMEN
+    - javascript:
+        - value: document.querySelector("#input-36E62F57-5056-A066-60BF-78ADF9F5676E").value = document.querySelector("#input-36E62F57-5056-A066-60BF-78ADF9F5676E").value.replace(/"/g, '');
+    - click_on:
+        - value: Submit
+          selector: input.btn
+    - find:
+        - selector: h2
+          value: Thank You
+  success:
+    headers:
+      status: 200
+    body:
+      contains: Thank you for contacting Senator Leahy.

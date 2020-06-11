@@ -1,0 +1,149 @@
+bioguide: C001053
+contact_form:
+  method: get
+  action: /Forms/WriteYourRep/
+  steps:
+    - visit: "https://coleforms.house.gov/contact/default.aspx"
+    - fill_in:
+        - name: zip5
+          selector: "form.zipform input[name='zip5']"
+          value: $ADDRESS_ZIP5
+          required: true
+    - click_on:
+        - value: Submit
+          selector: "form.zipform input[type='submit'][value='Submit']"
+    - fill_in:
+        - name: ctl00$ctl16$FirstName
+          selector: "#ctl00_ctl16_FirstName"
+          value: $NAME_FIRST
+          required: true
+        - name: ctl00$ctl16$LastName
+          selector: "#ctl00_ctl16_LastName"
+          value: $NAME_LAST
+          required: true
+        - name: ctl00$ctl16$Street
+          selector: "#ctl00_ctl16_Street"
+          value: $ADDRESS_STREET
+          required: true
+        - name: ctl00$ctl16$City
+          selector: "#ctl00_ctl16_City"
+          value: $ADDRESS_CITY
+          required: true
+        - name: ctl00$ctl16$Zip
+          selector: "#ctl00_ctl16_Zip"
+          value: $ADDRESS_ZIP5
+          required: true
+        - name: ctl00$ctl16$Email
+          selector: "#ctl00_ctl16_Email"
+          value: $EMAIL
+          required: true
+        - name: ctl00$ctl16$Subject
+          selector: "#ctl00_ctl16_Subject"
+          value: $SUBJECT
+          required: true
+        - name: ctl00$ctl16$Body
+          selector: "#ctl00_ctl16_Body"
+          value: $MESSAGE
+          required: true
+    - select:
+        - name: ctl00$ctl16$PrefixList
+          selector: "#ctl00_ctl16_PrefixList"
+          value: $NAME_PREFIX
+          required: true
+          options:
+            - Mr.
+            - Mrs.
+            - Ms.
+            - Mr. and Mrs.
+            - Miss
+            - Dr.
+            - Dr. and Mrs.
+            - Dr. and Mr.
+            - Drs.
+            - Professor
+            - The Honorable
+            - Reverend
+            - Pastor
+            - The Reverend Mosignor
+            - The Reverend Dr
+            - Sister
+            - Brother
+            - Rabbi
+            - Gen
+            - LtGen
+            - Major General
+            - BrigGen
+            - Col
+            - LtCol
+            - Major
+            - Capt.
+            - 1stLt
+            - 2ndLt
+            - CWO
+            - WO
+            - PO
+            - SgtMaj
+            - MGySgt
+            - 1stSgt
+            - MSgt
+            - GvSgt
+            - SSgt
+            - Sgt
+            - Cpl
+            - LCpl
+            - PFC
+            - Pvt
+            - CMSAF
+            - CMSgt
+            - SMSgt
+            - MSgt
+            - TSgt
+            - SFC
+            - SSG
+            - SP
+            - ADM
+            - VADM
+            - RADM
+            - RDML
+            - ENS
+            - CDR
+            - LCDR
+            - LT
+            - LTJG
+        - name: ctl00$ctl16$IssuesList
+          selector: "#ctl00_ctl16_IssuesList"
+          value: $TOPIC
+          required: true
+          options:
+            Agriculture: "108460"
+            Animals: "108459"
+            "Budget, Spending & Taxes": "108458"
+            Casework: "108457"
+            "Defense & National Security": "108456"
+            Education: "35971"
+            Energy: "35772"
+            Financial Services: "108461"
+            Foreign Affairs: "108455"
+            Health Care: "35970"
+            Immigration: "35589"
+            "Jobs & Economy": "108454"
+            "Military & Veterans": "108453"
+            Natural Resources: "108452"
+            "Science & Technology": "108451"
+            Second Amendment: "108450"
+            Social Security: "108449"
+            Traditional Values: "108448"
+            Transportation: "108447"
+            Tribal Relations: "108446"
+    - javascript:
+        - value: document.querySelector("#ctl00_ctl16_Body").value = document.querySelector("#ctl00_ctl16_Body").value.replace(/"/g, '');
+    - recaptcha:
+        - value: true
+    - click_on:
+        - value: Submit
+          selector: "#ctl00_ctl16_SubmitButton"
+  success:
+    headers:
+      status: 200
+    body:
+      contains: Thank you

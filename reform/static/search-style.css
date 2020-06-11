@@ -1,0 +1,16 @@
+.sidepanel{
+  width: 25%;
+}
+
+label[for=topic-select-selectized]{
+  display: block;
+  padding-bottom: 5px;
+}
+
+#topic-select{
+  font-size: 10px;
+}
+
+#test-table{
+  display: none;
+}

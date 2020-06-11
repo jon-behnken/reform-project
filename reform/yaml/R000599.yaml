@@ -1,0 +1,103 @@
+bioguide: R000599
+contact_form:
+  method: post
+  action: /htbin/formproc_za/zip-auth.txt%26form%3D/contact/email/email-zip-authenticated%26nobase%26fpGetVer%3D2
+  steps:
+    - visit: "https://ruiz.house.gov/contact/email"
+    - fill_in:
+        - name: required-zip5
+          selector: "#required-zip5"
+          value: $ADDRESS_ZIP5
+          required: true
+        - name: zip4
+          selector: "#zip4"
+          value: $ADDRESS_ZIP4
+          required: true
+    - click_on:
+        - selector: ".btn-success"
+    - find:
+        - selector: "#required-first"
+    - fill_in:
+        - name: required-first
+          selector: "#required-first"
+          value: $NAME_FIRST
+          required: true
+        - name: required-last
+          selector: "#required-last"
+          value: $NAME_LAST
+          required: true
+        - name: required-address
+          selector: "#required-address"
+          value: $ADDRESS_STREET
+          required: true
+        - name: required-city
+          selector: "#required-city"
+          value: $ADDRESS_CITY
+          required: true
+        - name: required-valid-email
+          selector: "#required-valid-email"
+          value: $EMAIL
+          required: true
+        - name: required-phone
+          selector: "#required-phone"
+          value: $PHONE
+          required: true
+        - name: required-message
+          selector: "#required-message"
+          value: $MESSAGE
+          required: true
+    - select:
+        - name: required-prefix
+          selector: "#required-prefix"
+          value: $NAME_PREFIX
+          required: true
+          options:
+            Ms.: Ms.
+            Miss: Miss
+            Mrs.: Mrs.
+            Mr.: Mr.
+            Mr. and Mrs.: Mr. and Mrs.
+            Rev.: Rev.
+            Dr.: Dr.
+            The Honorable: The Honorable
+            Rabbi: Rabbi
+        - name: required-issue
+          selector: "#required-issue"
+          value: $TOPIC
+          required: true
+          options:
+            Agriculture: Agriculture
+            Budget: Budget
+            Defense: Defense
+            Education: Education
+            Energy: Energy
+            Environmental: Environmental
+            Government Issues: Government Issues
+            Health: Health
+            Homeland Security: Homeland Security
+            Immigration: Immigration
+            International Relations: International Relations
+            Judicial: Judicial
+            Labor: Labor
+            Social Issues: Social Issues
+            Social Security: Social Security
+            Taxes: Taxes
+            Telecommunications: Telecommunications
+            Transportation: Transportation
+            Trade: Trade
+            Veterans: Veterans
+            Welfare: Welfare
+            Other Issues: Other Issues
+    - javascript:
+        - value: document.querySelector("#required-message").value = document.querySelector("#required-message").value.replace(/"/g, '');
+    - click_on:
+        - selector: ".btn-success"
+    - javascript:
+        - value: "document.querySelector('.btn-success').click();"
+    - find:
+        - selector: ".data"
+  success:
+    headers:
+      status: 200
+    body:
+      contains: your message has been sent

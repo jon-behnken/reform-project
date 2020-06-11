@@ -1,0 +1,36 @@
+<!doctype html>
+<title>{% block title %}{% endblock %} - Track The Change</title>
+
+<!-- custom JS/CSS -->
+<link rel="stylesheet" href="{{ url_for('static', filename='base-style.css') }}">
+
+<!-- fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.js"></script>
+
+<!-- selectize -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.css">
+
+<!-- DataTables -->
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+
+<nav>
+  <h1>Track The Change</h1>
+  <ul>
+    <li><a href="{{ url_for('landing.hello')}}">home</a>
+    <li><a href="{{ url_for('search.show_search') }}">search</a>
+    <li><a href="">about</a>
+  </ul>
+</nav>
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  {% block content %}{% endblock %}
+</section>

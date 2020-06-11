@@ -1,0 +1,65 @@
+bioguide: B001286
+contact_form:
+  method: post
+  action: "/contact/#wpcf7-f4-p5-o1"
+  steps:
+    - visit: "https://bustos.house.gov/contact/"
+    - fill_in:
+        - name: prefix
+          selector: "#prefix"
+          value: $NAME_PREFIX
+          required: true
+        - name: first-name
+          selector: "#first-name"
+          value: $NAME_FIRST
+          required: true
+        - name: last-name
+          selector: "#last-name"
+          value: $NAME_LAST
+          required: true
+        - name: address
+          selector: "#address"
+          value: $ADDRESS_STREET
+          required: true
+        - name: city
+          selector: "#city"
+          value: $ADDRESS_CITY
+          required: true
+        - name: zip5
+          selector: "#zip5"
+          value: $ADDRESS_ZIP5
+          required: true
+        - name: zip4
+          selector: "#zip4"
+          value: $ADDRESS_ZIP4
+          required: false
+        - name: email
+          selector: "#email"
+          value: $EMAIL
+          required: true
+        - name: phone
+          selector: "#phone"
+          value: $PHONE
+          required: true
+        - name: subject
+          selector: "#subject"
+          value: $SUBJECT
+          required: true
+        - name: message
+          selector: "#message"
+          value: $MESSAGE
+          required: true
+    - javascript:
+        - value: document.querySelector("#message").value = document.querySelector("#message").value.replace(/"/g, '');
+    - recaptcha:
+        - value: true
+    - click_on:
+        - value: Send Email
+          selector: input.wpcf7-form-control.wpcf7-submit.btn.btn-blue
+    - find:
+        - selector: ".wpcf7-response-output.wpcf7-display-none.wpcf7-mail-sent-ok"
+  success:
+    headers:
+      status: 200
+    body:
+      contains: Thank you for your message. It has been sent.

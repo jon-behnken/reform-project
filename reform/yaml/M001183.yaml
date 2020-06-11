@@ -1,0 +1,122 @@
+bioguide: M001183
+contact_form:
+  method: post
+  action: ""
+  steps:
+    - visit: "https://www.manchin.senate.gov/contact-joe/email-joe"
+    - click_on:
+        - selector: ".opinion a"
+    - find:
+        - selector: "#input-B03E05C4-4040-F985-52CD-9CA44623DE5E"
+    - fill_in:
+        - name: input_B03E05C4-4040-F985-52CD-9CA44623DE5E
+          selector: "#input-B03E05C4-4040-F985-52CD-9CA44623DE5E"
+          value: $NAME_FIRST
+          required: true
+        - name: input_B03E04BD-4040-F985-52CD-48E090E769DA
+          selector: "#input-B03E04BD-4040-F985-52CD-48E090E769DA"
+          value: $NAME_LAST
+          required: true
+        - name: input_B03E05F1-4040-F985-52CD-A580E72A7D41
+          selector: "#input-B03E05F1-4040-F985-52CD-A580E72A7D41"
+          value: $ADDRESS_STREET
+          required: true
+        - name: input_B03E0595-4040-F985-52CD-C572364023FE
+          selector: "#input-B03E0595-4040-F985-52CD-C572364023FE"
+          value: $ADDRESS_CITY
+          required: true
+        - name: input_B03E04CC-4040-F985-52CD-4DDB58DA474A
+          selector: "#input-B03E04CC-4040-F985-52CD-4DDB58DA474A"
+          value: $ADDRESS_ZIP5
+          required: true
+        - name: input_B03E046E-4040-F985-52CD-A2F10450D58D
+          selector: "#input-B03E046E-4040-F985-52CD-A2F10450D58D"
+          value: $PHONE
+          required: true
+        - name: input_B03E0536-4040-F985-52CD-AFE12CDE8D31
+          selector: "#email"
+          value: $EMAIL
+          required: true
+        - name: input_B03E05A4-4040-F985-52CD-730C08912F4F
+          selector: "#input-B03E05A4-4040-F985-52CD-730C08912F4F"
+          value: $EMAIL
+          required: true
+        - name: input_CD35B39E-05AB-A9CD-A328-4AA2A35FE971
+          selector: "#input-CD35B39E-05AB-A9CD-A328-4AA2A35FE971"
+          value: $SUBJECT
+          required: true
+        - name: input_B03E05B4-4040-F985-52CD-8DF0BC10EEE2
+          selector: "#input-B03E05B4-4040-F985-52CD-8DF0BC10EEE2"
+          value: $MESSAGE
+          required: true
+    - select:
+        - name: input_B03E0527-4040-F985-52CD-C0DD6BEF325F
+          selector: "#input-B03E0527-4040-F985-52CD-C0DD6BEF325F"
+          value: $NAME_PREFIX
+          required: true
+          options:
+            - Mr.
+            - Ms.
+            - Mrs.
+            - Dr.
+        - name: input_B03E04DB-4040-F985-52CD-18F332336F99
+          selector: "#input-B03E04DB-4040-F985-52CD-18F332336F99"
+          value: $TOPIC
+          required: true
+          options:
+            General / Other: GEN
+            Abortion: ABO
+            Aging / Children / Families: AGE
+            Agriculture: AGR
+            Animal Welfare / Endangered Species: AC
+            Appalachian Regional Commission: ARC
+            Arts: ARTS
+            Banking / Finance: BANK
+            Budget: BUD
+            Campaign Finance / Election Reform: CAMF
+            Civil Rights: CR
+            Coal (Mining, Health &amp; Safety): COAL
+            Constitution: CONST
+            Defense / Military: DEF
+            Drugs: DRUG
+            Education: EDU
+            Energy: ENE
+            Environment: ENV
+            Foreign Affairs: FOR
+            Gun Ownership: GUN
+            Health Care: HEA
+            Homeland Security: HOM
+            Housing: HOUS
+            Immigration: IMM
+            Intelligence: INT
+            Interior / Natural Resources: INR
+            Jobs and the Economy: INR
+            Jobs and the Economy: JOBS
+            Judiciary / Nominations: JUD
+            Labor / Pensions: LAB
+            Medicare: MED
+            Postal: POST
+            Rules: RUL
+            Science / Technology, Telecommunications: TECH
+            Small Business: SMB
+            Social Security: SSEC
+            Taxes: TAX
+            Trade / Steel: TRAD
+            Transportation: TRA
+            Veterans: VET
+            Welfare: WEL
+    - click_on:
+        - selector: "#input-3F2F30BB-C16D-9FAD-0D20-D9382AC46C87"
+    - javascript:
+        - value: document.querySelector("#input-B03E05B4-4040-F985-52CD-8DF0BC10EEE2").value = document.querySelector("#input-B03E05B4-4040-F985-52CD-8DF0BC10EEE2").value.replace(/"/g, '');
+    - click_on:
+        - value: Submit
+          selector: .btn
+    - find:
+        - value: "THANK YOU"
+          selector: h1
+  success:
+    headers:
+      status: 200
+    body:
+      contains: "Thank you for contacting"

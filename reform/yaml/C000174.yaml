@@ -1,0 +1,104 @@
+bioguide: C000174
+contact_form:
+  method: post
+  action: ""
+  steps:
+    - visit: "https://www.carper.senate.gov/public/index.cfm/email-senator-carper"
+    - fill_in:
+        - name: field_720EA1C4-9CA9-4A9F-8FE8-BE45DE350FAB
+          selector: "#field_720EA1C4-9CA9-4A9F-8FE8-BE45DE350FAB"
+          value: $NAME_FIRST
+          required: true
+        - name: field_DDDC1A32-888A-4713-B1A6-AC8661C856A6
+          selector: "#field_DDDC1A32-888A-4713-B1A6-AC8661C856A6"
+          value: $NAME_LAST
+          required: true
+        - name: field_E5BBA595-CD12-4F4B-AEE5-93B1B7A4BC80
+          selector: "#field_E5BBA595-CD12-4F4B-AEE5-93B1B7A4BC80"
+          value: $ADDRESS_STREET
+          required: true
+        - name: field_C72971E3-4513-4297-9371-32547398C5A2
+          selector: "#field_C72971E3-4513-4297-9371-32547398C5A2"
+          value: $ADDRESS_CITY
+          required: true
+        - name: field_57CB6741-6128-4F6B-9116-2F777AA90830
+          selector: "#field_57CB6741-6128-4F6B-9116-2F777AA90830"
+          value: $ADDRESS_ZIP5
+          required: true
+        - name: field_ACFFD452-B139-413D-8E0F-72046D4635D9
+          selector: "#field_ACFFD452-B139-413D-8E0F-72046D4635D9"
+          value: $EMAIL
+          required: true
+        - name: field_52700AB6-009C-4E83-9962-6015E086D1AC
+          selector: "#field_52700AB6-009C-4E83-9962-6015E086D1AC"
+          value: $MESSAGE
+          required: true
+    - select:
+        - name: field_7984AAE2-A365-4C2A-9E03-C53E3718970E
+          selector: "#field_7984AAE2-A365-4C2A-9E03-C53E3718970E"
+          value: $NAME_PREFIX
+          required: true
+          options:
+            - Mr.
+            - Mr. and Mr.
+            - Mrs.
+            - Mrs. and Mrs.
+            - Ms.
+            - Mr. and Mrs.
+            - Dr.
+        - name: field_9FA2D12A-DC4D-4725-99CA-DFD388CA0806
+          selector: "#field_9FA2D12A-DC4D-4725-99CA-DFD388CA0806"
+          value: $TOPIC
+          required: true
+          options:
+            Agriculture: Agriculture
+            Amtrak: Amtrak
+            Animal Rights: Animal Rights
+            Arts and Humanities: Arts and Humanities
+            Banking: Banking
+            Budget: Budget
+            Campaign Finance: Campaign Finance
+            Civil Rights: Civil Rights
+            Consumer Safety: Consumer Safety
+            Crime: Crime
+            Defense: Defense
+            Economy: Economy
+            Education: Education
+            Energy and Gas Prices: Energy/Gas Prices
+            Environment: Environment
+            Foreign Relations: Foreign Relations
+            Federal and State Grants: Grants~ Federal/State
+            Guns and Firearms: Guns/Firearms
+            Hospitals and Health Care: Health Care General/Hospitals
+            Support for Health Care Reform: Health Care Reform - Support
+            Opposition to Health Care Reform: Health Care Reform - Oppose
+            Homeland Security: Homeland Security
+            Housing: Housing
+            Immigration: Immigration
+            Iraq: Iraq
+            Judicial Nominations: Judicial Nominations
+            Labor: Labor
+            "Medicare, Medicaid and Prescription Drugs": Medicare/Medicaid/Prescription Drugs
+            Postal Issues: Postal Issues
+            Prime Hook: Prime Hook
+            Reproductive Choice: Reproductive Choice
+            Science and Technology: "Science & Technology"
+            Senior Citizens: Seniors
+            Social Security: Social Security
+            Tax Reform: Tax Reform
+            Domestic Trade: Trade - Domestic
+            Foreign Trade: Trade - Foreign
+            Transportation: Transportation
+            Telecommunications: TV/Radio/Internet/Telecommunications
+            Veterans: "Veteran's Issues"
+            Welfare: Welfare
+    - javascript:
+        - value: document.querySelector("#field_52700AB6-009C-4E83-9962-6015E086D1AC").value = document.querySelector("#field_52700AB6-009C-4E83-9962-6015E086D1AC").value.replace(/"/g, '');
+    - click_on:
+        - value: Submit
+          selector: div.buttonHolder input
+  success:
+    headers:
+      status: 200
+    body:
+      contains: Thank you

@@ -1,0 +1,126 @@
+bioguide: R000584
+contact_form:
+  method: post
+  action: ""
+  steps:
+    - visit: "http://www.risch.senate.gov/public/index.cfm?p=Email"
+    - wait:
+        - value: 1
+    - fill_in:
+        - name: field_5B32FE1C-2B47-4F0E-87C1-E658F39D899D
+          selector: "#field_5B32FE1C-2B47-4F0E-87C1-E658F39D899D"
+          value: $NAME_FIRST
+          required: true
+        - name: field_793E9DC5-0695-46B7-904C-9EB27A761D3A
+          selector: "#field_793E9DC5-0695-46B7-904C-9EB27A761D3A"
+          value: $NAME_LAST
+          required: true
+        - name: field_7A0F9104-79DC-4CCE-AEE5-328456AFDA7C
+          selector: "#field_7A0F9104-79DC-4CCE-AEE5-328456AFDA7C"
+          value: $ADDRESS_STREET
+          required: true
+        - name: field_73D2B9A5-2B33-475B-8E83-F33EA7F2B6F1
+          selector: "#field_73D2B9A5-2B33-475B-8E83-F33EA7F2B6F1"
+          value: $ADDRESS_CITY
+          required: true
+        - name: field_63BD55D8-F99E-4097-8F02-4B1D030EFC55
+          selector: "#field_63BD55D8-F99E-4097-8F02-4B1D030EFC55"
+          value: $ADDRESS_ZIP5
+          required: true
+        - name: field_B1169F16-2DEA-4B04-B3EC-A20A18A0C18B
+          selector: "#field_B1169F16-2DEA-4B04-B3EC-A20A18A0C18B"
+          value: $PHONE
+          required: true
+        - name: field_B0E2E8D3-6EF6-42B4-B195-97567D284026
+          selector: "#field_B0E2E8D3-6EF6-42B4-B195-97567D284026"
+          value: $EMAIL
+          required: true
+        - name: field_B3546A94-6FC9-4491-B49E-491AB436132C
+          selector: "#field_B3546A94-6FC9-4491-B49E-491AB436132C"
+          value: $MESSAGE
+          required: true
+          options:
+            max_length: 1500
+    - select:
+        - name: field_0CB45ECA-A067-4502-A126-3BF34074A15A
+          selector: "#field_0CB45ECA-A067-4502-A126-3BF34074A15A"
+          value: $NAME_PREFIX
+          required: true
+          options:
+            - Mr.
+            - Mrs.
+            - Ms.
+            - Mr. and Mrs.
+            - Dr.
+            - Dr. and Mrs.
+            - Dr. and Mr.
+            - Reverend
+            - Pastor
+            - Sister
+        - name: field_2170B182-5ED8-4BEB-AFB3-6152D226A3BB
+          selector: "#field_2170B182-5ED8-4BEB-AFB3-6152D226A3BB"
+          value: $TOPIC
+          required: true
+          options:
+            - Abortion
+            - Agriculture
+            - Animal Rights
+            - Appropriations
+            - Autographed Photo
+            - Banking
+            - Budget
+            - Crime
+            - Civil Rights
+            - Constituent Services
+            - Constitution
+            - Defense/Military
+            - Eagle Scouts
+            - Economy
+            - Education
+            - Energy
+            - Environment
+            - FEMA
+            - Finance
+            - Foreign Affairs
+            - Government Affairs
+            - Guns
+            - Health Care
+            - Health Insurance
+            - Homeland Security
+            - Housing and Urban Development
+            - Immigration
+            - Inauguration 2009
+            - Insurance
+            - Intelligence
+            - Judiciary
+            - Labor
+            - NASA
+            - Nominations
+            - Science/Technology
+            - Small Business
+            - Social Security
+            - Tax
+            - Telecommunications
+            - Tort Reform
+            - Trade
+            - Transportation
+            - U.S. Military Academies
+            - Veterans Affairs
+            - War in Iraq
+            - War on Terror
+            - Welfare
+            - "Women's Issues"
+            - Other
+    - javascript:
+        - value: document.querySelector("#field_B3546A94-6FC9-4491-B49E-491AB436132C").value = document.querySelector("#field_B3546A94-6FC9-4491-B49E-491AB436132C").value.replace(/"/g, '');
+    - javascript:
+      - value: document.querySelector("#g-recaptcha-response").style.display = "block";        
+    - recaptcha:
+        - value: true
+    - javascript:
+        - value: document.querySelector("div.buttonHolder input").click();
+  success:
+    headers:
+      status: 200
+    body:
+      contains: Thank you for contacting my office

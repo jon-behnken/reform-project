@@ -1,0 +1,120 @@
+bioguide: F000462
+contact_form:
+  method: get
+  action: /contact/contactform.htm
+  steps:
+    - visit: "http://frankel.house.gov/contact/email-me/"
+    - fill_in:
+        - name: zip5
+          selector: "form.zipform input[name='zip5']"
+          value: $ADDRESS_ZIP5
+          required: true
+        - name: zip4
+          selector: "form.zipform input[name='zip4']"
+          value: $ADDRESS_ZIP4
+          required: true
+    - click_on:
+        - value: Submit
+          selector: "form.zipform input[type='submit'][value='Submit']"
+    - find:
+        - selector: "#ctl00_ctl13_FirstName"
+    - fill_in:
+        - name: required-first
+          selector: "#ctl00_ctl13_FirstName"
+          value: $NAME_FIRST
+          required: true
+        - name: required-last
+          selector: "#ctl00_ctl13_LastName"
+          value: $NAME_LAST
+          required: true
+        - name: required-address
+          selector: "#ctl00_ctl13_Street"
+          value: $ADDRESS_STREET
+          required: true
+        - name: required-city
+          selector: "#ctl00_ctl13_City"
+          value: $ADDRESS_CITY
+          required: true
+        - name: zip5
+          selector: "#ctl00_ctl13_Zip"
+          value: $ADDRESS_ZIP5
+          required: true
+        - name: zip4
+          selector: "#ctl00_ctl13_Zip4"
+          value: $ADDRESS_ZIP4
+          required: true
+        - name: required-email
+          selector: "#ctl00_ctl13_Email"
+          value: $EMAIL
+          required: true
+        - name: required-subject
+          selector: "#ctl00_ctl13_Subject"
+          value: $SUBJECT
+          required: true
+        - name: required-message
+          selector: "#ctl00_ctl13_Body"
+          value: $MESSAGE
+          required: true
+    - select:
+        - name: required-prefix
+          selector: "#ctl00_ctl13_PrefixList"
+          value: $NAME_PREFIX
+          required: true
+          options:
+            - Mr.
+            - Mrs.
+            - Ms.
+            - Miss
+            - Dr.
+            - "Mr. & Mrs."
+            - "Dr. & Mrs."
+            - "Dr. & Mr."
+            - C.O.
+            - Representative
+            - Senator
+            - The Honorable
+            - Col.
+        - name: required-issue
+          selector: "#ctl00_ctl13_IssuesList"
+          value: $TOPIC
+          required: true
+          options:
+            Abortion: ABORTION
+            Agriculture: AGR
+            Animal Rights: AN
+            Banking: BANK
+            Budget: BUD
+            Defense: DEF
+            Economy: ECON
+            Education: EDU
+            Energy: ENE
+            Environment: ENV
+            Government Reform: GOV
+            Health Care: HEA
+            Homeland Security: HOM
+            Housing: HUD
+            Immigration: IMM
+            International Affairs: INT
+            Labor: LAB
+            Outdoor Sporting: OUT-DOOR
+            Postal Service: POST
+            Second Amendment: GUN
+            Social Issues: SOC
+            Social Security: SSEC
+            Taxation: TAX
+            Telecommunications: TEL
+            Trade: TRADE
+            Transportation: TRA
+            Veterans: VET
+    - javascript:
+        - value: document.querySelector("#ctl00_ctl13_Body").value = document.querySelector("#ctl00_ctl13_Body").value.replace(/"/g, '');
+    - click_on:
+        - value: Submit
+          selector: "form.zipform input[type='submit'][value='Submit']"
+    - find:
+        - selector: "#ctl00_ctl15_ctl00_Text"
+  success:
+    headers:
+      status: 200
+    body:
+      contains: Thank you. Your form has been successfully submitted.

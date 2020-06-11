@@ -1,0 +1,12 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+
+#config file
+config.py
+
+#logging
+logging/
+
+#setup
+setup.cfg

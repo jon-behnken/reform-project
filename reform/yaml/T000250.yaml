@@ -1,0 +1,117 @@
+bioguide: T000250
+contact_form:
+  method: post
+  action: ""
+  steps:
+    - visit: "https://www.thune.senate.gov/public/index.cfm/contact"
+    - fill_in:
+        - name: field_E3E9333A-D709-49D7-8B96-AB512A781355
+          selector: "#field_E3E9333A-D709-49D7-8B96-AB512A781355"
+          value: $NAME_FIRST
+          required: true
+        - name: field_1749496B-47EC-4AA8-97BC-16A81A93A022
+          selector: "#field_1749496B-47EC-4AA8-97BC-16A81A93A022"
+          value: $NAME_LAST
+          required: true
+        - name: field_5DF570D1-FAAA-4889-9664-95E3B68BAAC2
+          selector: "#field_5DF570D1-FAAA-4889-9664-95E3B68BAAC2"
+          value: $ADDRESS_STREET
+          required: true
+        - name: field_37AEBB8F-FE3C-4331-86A2-BCFB6181ECFE
+          selector: "#field_37AEBB8F-FE3C-4331-86A2-BCFB6181ECFE"
+          value: $ADDRESS_CITY
+          required: true
+        - name: field_72F52A16-9C65-44C6-82BC-F516F395F529
+          selector: "#field_72F52A16-9C65-44C6-82BC-F516F395F529"
+          value: $ADDRESS_ZIP5
+          required: true
+        - name: field_CBA11263-B561-4D67-A1C9-E82B29CA2046
+          selector: "#field_CBA11263-B561-4D67-A1C9-E82B29CA2046"
+          value: $PHONE
+          required: true
+        - name: field_35E332A5-029B-44C8-8395-6CCA8AEC364D
+          selector: "#field_35E332A5-029B-44C8-8395-6CCA8AEC364D"
+          value: $EMAIL
+          required: true
+        - name: field_52D20833-C7A4-455D-86B8-1BEB4C81E758
+          selector: "#field_52D20833-C7A4-455D-86B8-1BEB4C81E758"
+          value: $MESSAGE
+          required: true
+          options:
+            max_length: 2500
+    - select:
+        - name: field_9947B9A9-7835-48E8-A1EC-ECC643CDAE45
+          selector: "#field_9947B9A9-7835-48E8-A1EC-ECC643CDAE45"
+          value: $NAME_PREFIX
+          required: true
+          options:
+            "Mr.": "Mr."
+            "Mrs.": "Mrs."
+            "Ms.": "Ms."
+            "Dr.": "Dr."
+            "Professor": "Professor"
+            "Pastor": "Pastor"
+            "Rabbi": "Rabbi"
+            "Reverend": "Reverend"
+            "Father": "Father"
+            "Sister": "Sister"
+            "Representative": "Representative"
+            "Senator": "Senator"
+            "No Prefix": "No Prefix"
+        - name: field_6F8F9AF6-B16C-4ADD-9B4F-88F7A910C63F
+          selector: "#field_6F8F9AF6-B16C-4ADD-9B4F-88F7A910C63F"
+          value: $TOPIC
+          required: true
+          options:
+            Help with Federal Agency: CASE
+            Flag Request: FLAG
+            Scheduling Request: MEET
+            Internship Opportunities: INTERN
+            Letter Request: LETTER
+            Photo Request: PHOTO
+            Abortion: JUD-ABOR
+            Agriculture: AG
+            "Aviation,Transportation": TRANS
+            Banking and Finance: BANK
+            Budget: BUDG
+            Campaign and Election Reform: ELEC
+            Commerce: COMM
+            Crime: JUD-CRIME
+            Defense and Military: DEF
+            "Economy, Business and Industry": ECN
+            Education: EDU
+            "Energy,Renewable Energy": ENG
+            "Environment,Forests,Public Lands/Parks": ENV
+            Ethics and Congressional Reform: ETHICS
+            Faith-Based Initiatives: FAITH
+            Foreign Relations: IR
+            Government Affairs: GOV
+            "Health Care, Medicare": HLTH
+            Homeland Security and Terrorism: HMSEC
+            Housing and Urban Affairs: HOUSE
+            Immigration: IMM
+            Indian Affairs: IA
+            "Justice/Legal Issues, US Constitution": JUD
+            Labor: LABOR
+            "Nutrition,Welfare": WEL
+            Postal Issues: POST
+            Science and Technology: SCI
+            Second Amendment: JUD-GUN
+            Social Security: SS
+            Student Inquiry: SPECIAL
+            Taxes: TAX
+            Telecommunications and the Internet: TELECOMM
+            Tour Request: TOUR
+            Trade: TRD
+            Veterans Affairs: VET
+            Water Issues: WATER
+    - javascript:
+        - value: document.querySelector("#field_52D20833-C7A4-455D-86B8-1BEB4C81E758").value = document.querySelector("#field_52D20833-C7A4-455D-86B8-1BEB4C81E758").value.replace(/"/g, '');
+    - click_on:
+        - value: Submit
+          selector: input.btn.btn-primary
+  success:
+    headers:
+      status: 200
+    body:
+      contains: Thank you for taking the time to contact me

@@ -1,0 +1,112 @@
+bioguide: M001184
+contact_form:
+  method: get
+  action: /forms/writeyourrep/
+  steps:
+    - visit: "http://massieforms.house.gov/contact/"
+    - fill_in:
+        - name: zip5
+          selector: "form.zipform input[name='zip5']"
+          value: $ADDRESS_ZIP5
+          required: true
+        - name: zip4
+          selector: "form.zipform input[name='zip4']"
+          value: $ADDRESS_ZIP4
+          required: true
+    - click_on:
+        - value: Submit
+          selector: "form.zipform input[type='submit'][value='Submit']"
+    - find:
+        - selector: '#ctl00_ctl32_FirstName'
+    - fill_in:
+        - name: ctl00$ctl32$FirstName
+          selector: "#ctl00_ctl32_FirstName"
+          value: $NAME_FIRST
+          required: true
+        - name: ctl00$ctl32$LastName
+          selector: "#ctl00_ctl32_LastName"
+          value: $NAME_LAST
+          required: true
+        - name: ctl00$ctl32$Street
+          selector: "#ctl00_ctl32_Street"
+          value: $ADDRESS_STREET
+          required: true
+        - name: ctl00$ctl32$City
+          selector: "#ctl00_ctl32_City"
+          value: $ADDRESS_CITY
+          required: true
+        - name: ctl00$ctl32$Zip
+          selector: "#ctl00_ctl32_Zip"
+          value: $ADDRESS_ZIP5
+          required: true
+        - name: ctl00$ctl32$Phone
+          selector: "#ctl00_ctl32_Phone"
+          value: $PHONE
+          required: true
+        - name: ctl00$ctl32$Email
+          selector: "#ctl00_ctl32_Email"
+          value: $EMAIL
+          required: true
+        - name: ctl00$ctl32$Subject
+          selector: "#ctl00_ctl32_Subject"
+          value: $SUBJECT
+          required: true
+        - name: ctl00$ctl32$Body
+          selector: "#ctl00_ctl32_Body"
+          value: $MESSAGE
+          required: true
+    - select:
+        - name: ctl00$ctl32$PrefixList
+          selector: "#ctl00_ctl32_PrefixList"
+          value: $NAME_PREFIX
+          required: true
+          options:
+            - Mr.
+            - Mrs.
+            - Dr.
+            - Ms.
+            - Col.
+            - Major
+            - Rear Admiral
+            - Captain
+            - Major General
+            - General
+            - Commander
+            - The Honorable
+            - "Mr. & Mrs."
+            - Representative
+            - Sr.
+            - Mayor
+            - Commissioner
+            - Reverend
+        - name: ctl00$ctl32$IssuesList
+          selector: "#ctl00_ctl32_IssuesList"
+          value: $TOPIC
+          required: true
+          options:
+            Agriculture and Food: "59814"
+            Armed Forces and National Security: "59779"
+            Economics and Public Finance: "59656"
+            Energy: "59614"
+            Environment: "59251"
+            Immigration: "59431"
+            Law: "59385"
+            "Science, Technology, Communications": "59345"
+            Social Welfare: "59313"
+            Taxation: "59299"
+    - check:
+        - name: ctl00$ctl32$ReplyChoice
+          selector: "#ctl00_ctl32_ReplyChoice_0"
+          value: Respond
+    - javascript:
+        - value: document.querySelector("#ctl00_ctl32_Email").value = document.querySelector("#ctl00_ctl32_Email").value.replace(/"/g, '');
+    - recaptcha:
+        - value: true
+    - click_on:
+        - value: Submit
+          selector: "#ctl00_ctl32_SubmitButton"
+  success:
+    headers:
+      status: 200
+    body:
+      contains: Your message has been submitted

@@ -1,0 +1,158 @@
+bioguide: S000522
+contact_form:
+  method: post
+  action: /contact.aspx
+  steps:
+    - visit: "https://chrissmith.house.gov/contact/write.htm"
+    - fill_in:
+        - name: required-first
+          selector: "#ctl00_ctl15_ctl01_Text form input[name='required-first']"
+          value: $NAME_FIRST
+          required: true
+        - name: required-last
+          selector: "#ctl00_ctl15_ctl01_Text form input[name='required-last']"
+          value: $NAME_LAST
+          required: true
+        - name: required-address
+          selector: "#ctl00_ctl15_ctl01_Text form input[name='required-address']"
+          value: $ADDRESS_STREET
+          required: true
+        - name: required-city
+          selector: "#ctl00_ctl15_ctl01_Text form input[name='required-city']"
+          value: $ADDRESS_CITY
+          required: true
+        - name: zip5
+          selector: "#ctl00_ctl15_ctl01_Text form input[name='zip5']"
+          value: $ADDRESS_ZIP5
+          required: true
+        - name: zip4
+          selector: "#ctl00_ctl15_ctl01_Text form input[name='zip4']"
+          value: $ADDRESS_ZIP4
+          required: true
+        - name: required-email
+          selector: "#ctl00_ctl15_ctl01_Text form input[name='required-email']"
+          value: $EMAIL
+          required: true
+        - name: required-message
+          selector: "#ctl00_ctl15_ctl01_Text form textarea[name='required-message']"
+          value: $MESSAGE
+          required: true
+    - select:
+        - name: required-prefix
+          selector: "#ctl00_ctl15_ctl01_Text form select[name='required-prefix']"
+          value: $NAME_PREFIX
+          required: true
+          options:
+            - Mr.
+            - Ms.
+            - Mrs.
+            - Mr. and Mrs.
+            - Miss
+            - Dr.
+            - Dr. and Mrs.
+            - Dr. and Mr.
+            - Drs.
+            - Professor
+            - The Honorable
+            - Senator
+            - Assemblyman
+            - Assemblywoman
+            - Mayor
+            - Councilman
+            - Councilwoman
+            - Freeholder
+            - Committeewoman
+            - Committeewoman
+            - Reverend
+            - Pastor
+            - Father
+            - Brother
+            - Sister
+            - Reverend Monsignor
+            - Bishop
+            - Cardinal
+            - Rabbi
+            - General
+            - Lieutenant General
+            - Major General
+            - Brigadier General
+            - Colonel
+            - LtCol
+            - Maj
+            - Capt
+            - 1stLt
+            - 2ndLt
+            - CWO
+            - WO
+            - SgtMaj
+            - MGySgt
+            - 1stSgt
+            - MSgt
+            - GySgt
+            - SSgt
+            - Sgt
+            - Cpl
+            - LCpl
+            - PFC
+            - Pvt
+            - CMSAF
+            - CMSgt
+            - SMSgt
+            - MSgt
+            - TSgt
+            - SFC
+            - SSG
+            - SP
+            - ADM
+            - VADM
+            - RADM
+            - RDML
+            - ENS
+            - CDR
+            - LCDR
+            - LT
+            - LTJG
+        - name: required-issue
+          selector: "#ctl00_ctl15_ctl01_Text form select[name='required-issue']"
+          value: $TOPIC
+          required: true
+          options:
+            Agriculture: AG
+            Budget: BUD
+            Defense: DEF
+            Economy: BUD
+            Education and Labor: ED
+            Energy: ENV.ENERGY
+            Environmental: ENV
+            Government Reform: GOV
+            Health: HE
+            Homeland Security: HOMELAND
+            Immigration: JUD.IMIG
+            International Relations: INTL
+            Judiciary: JUD
+            Social Issues: JUD
+            Social Security: SS
+            Telecommunications: COMM.NET
+            Taxes: TAX
+            Trade: TRADE
+            Transportation: TRAN
+            Veterans: VET
+            Welfare: WELF
+    - check:
+        - name: opt
+          selector: "#ctl00_ctl15_ctl01_Text form input[name='opt']"
+          value: "yes"
+    - javascript:
+        - value: document.querySelector("#ctl00_ctl15_ctl01_Text form textarea[name='required-message']").value = document.querySelector("#ctl00_ctl15_ctl01_Text form textarea[name='required-message']").value.replace(/"/g, '');
+    - click_on:
+        - value: Send Email
+          selector: "#ctl00_ctl15_ctl01_Text form input[type='submit'][value='Send Email']"
+    - wait:
+        - value: 3
+    - find:
+        - selector: "#fb-root"
+  success:
+    headers:
+      status: 200
+    body:
+      contains: Thank you

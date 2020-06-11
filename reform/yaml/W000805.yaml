@@ -1,0 +1,194 @@
+bioguide: W000805
+contact_form:
+  method: post
+  action: ""
+  steps:
+    - visit: "https://www.warner.senate.gov/public/index.cfm/contactpage#form_f9db6196-2dc7-4cda-8add-f8435a71318a"
+    - fill_in:
+        - name: field_DB042583-9E58-4B92-8979-A28769F48DB6
+          selector: "#field_DB042583-9E58-4B92-8979-A28769F48DB6"
+          value: $NAME_FIRST
+          required: true
+        - name: field_B5EC1754-A087-456B-8ADB-7D3B19CF9997
+          selector: "#field_B5EC1754-A087-456B-8ADB-7D3B19CF9997"
+          value: $NAME_LAST
+          required: true
+        - name: field_35ED0D76-065E-41F1-B5C8-5F8DE89ECF90
+          selector: "#field_35ED0D76-065E-41F1-B5C8-5F8DE89ECF90"
+          value: $ADDRESS_STREET
+          required: true
+        - name: field_3D314FC8-C88D-42F9-843E-163AD337D87C
+          selector: "#field_3D314FC8-C88D-42F9-843E-163AD337D87C"
+          value: $ADDRESS_CITY
+          required: true
+        - name: field_0F85608E-FB00-4C2C-A32A-82B202F738C9
+          selector: "#field_0F85608E-FB00-4C2C-A32A-82B202F738C9"
+          value: $ADDRESS_ZIP5
+          required: true
+        - name: field_050C394F-5F4C-40FD-92C0-5DD66961745D
+          selector: "#field_050C394F-5F4C-40FD-92C0-5DD66961745D"
+          value: $PHONE
+          required: true
+        - name: field_9C7D925D-CFD3-40BC-9CF6-961FC04333D6
+          selector: "#field_9C7D925D-CFD3-40BC-9CF6-961FC04333D6"
+          value: $EMAIL
+          required: true
+        - name: field_7A0144EC-734E-4C09-8992-734AC3E6E337
+          selector: "#field_7A0144EC-734E-4C09-8992-734AC3E6E337"
+          value: $SUBJECT
+          required: true
+        - name: field_6FA5F44F-28CA-45FD-9142-3C29C257B186
+          selector: "#field_6FA5F44F-28CA-45FD-9142-3C29C257B186"
+          value: $MESSAGE
+          required: true
+          options:
+            max_length: 500
+    - select:
+        - name: field_EEC119B6-F19D-4F37-8035-F4A46C2D7C2F
+          selector: "#field_EEC119B6-F19D-4F37-8035-F4A46C2D7C2F"
+          value: $NAME_PREFIX
+          required: true
+          options:
+            Mr.: Mr.
+            Ms.: Ms.
+            Miss.: Miss.
+            Mrs.: Mrs.
+            Mr. & Mrs.: Mr. & Mrs.
+            Mx.: Mx.
+            Mx. & Mrs.: Mx. & Mrs.
+            Mx. & Mr.: Mx. & Mr.
+            Mx. & Mx.: Mx. & Mx.
+            Dr.: Dr.
+            Dr. and Mrs.: Dr. and Mrs.
+            Dr. and Mr.: Dr. and Mr.
+            Misc.: Misc.
+            Ind.: Ind.
+            Reverend: Reverend
+            Pastor: Pastor
+            Sister: Sister
+            Rabbi: RABBI
+            Imam: Imam
+            -----Military Ranks-----: OTHMIL
+            Admiral: ADMIRAL
+            Airman: AIRMAN
+            Airman Basic: AIRMANBASIC
+            Airman First Class: AIRMAN1
+            Brigadier General: BRIGADIERGENERAL
+            Captain: CAPTAIN
+            Chief Master Sergeant: CHIEFMASTERSERGEANT
+            Chief Master Sergeant of the Air Force: CHIEFMASTERSGTAF
+            Chief Petty Officer : CHIEFPETTYOFFICER
+            Chief Warrant Officer: CHIEFWARRENTOFFICER
+            Colonel: COLONEL
+            Command Chief Master Sergeant: CMDCHIEFMASTERSGT
+            Command Sergeant Major: COMMANDSERGEANTMAJOR
+            Commander: COMMANDER
+            Corporal: CORPORAL
+            Ensign: ENSIGN
+            First Lieutenant: FIRSTLIEUTENANT
+            First Sergeant: FIRSTSERGEANT
+            General: GENERAL
+            Gunnery Sergeant: GUNNERYSERGEANT
+            Lance Corporal: LANCECORPORAL
+            Lieutenant: LIEUTENANT
+            Lieutenant Colonel: LIEUTENANTCOLONEL
+            Lieutenant Commander: LIEUTENANTCOMMANDER
+            Lieutenant General: LIEUTENANTGENERAL
+            Lieutenant, Junior Grade: LIEUTENANTJRGRD
+            Major: MAJOR
+            Major General: MAJORGENERAL
+            Master Chief Petty Officer: MASTERCHIEFPETTYOFFICER
+            Master Chief Petty Officer of the Navy: MSTCHIEFPETTYOFCNAVY
+            Master Gunnery Sergeant: MASTERGUNNERYSERGEANT
+            Master Sergeant: MASTERSERGEANT
+            Petty Officer First Class: PETTYOFFICER1
+            Petty Officer Second Class: PETTYOFFICER2
+            Petty Officer Third Class: PETTYOFFICER3
+            Private: PRIVATE
+            Private First Class: PRIVATE1
+            Rear Admiral (lower half): REARADMLOWER
+            Rear Admiral (upper half): REARADMUPPER
+            Seaman: SEAMAN
+            Seaman Apprentice: SEAMANAPPRENTICE
+            Seaman Recruit: SEAMANRECRUIT
+            Second Lieutenant: SECLIEUTENANT
+            Senior Airman: SENIORAIRMAN
+            Senior Chief Petty Officer: SENIORCHIEFPETTYOFFICER
+            Senior Master Sergeant: SENIORMASTERSERGEANT
+            Sergeant: SERGEANT
+            Sergeant First Class : SERGEANT1
+            Sergeant Major: SERGEANTMAJOR
+            Sergeant Major of the Army : SERGEANTMAJORA
+            Sergeant Major of the Corps: SERGEANTMAJORC
+            Specialist : SPECIALIS
+            Staff Sergeant: STAFFSERGEANT
+            Technical Sergeant: TECHNICALSERGEANT
+            Vice Admiral: VICEADMIRA
+            Warrant Officer: WARRANTOFFICER
+        - name: field_ABEC110B-7E92-4B85-B94A-5CCC8A7A046D
+          selector: "#field_ABEC110B-7E92-4B85-B94A-5CCC8A7A046D"
+          value: $TOPIC
+          required: true
+          options:
+            Agriculture: Agr
+            Animal Welfare: Anim
+            Arts and Humanities: Arts
+            Banking and Financial Services: FINC
+            Budget: bud
+            Campaign Finance: campfinc
+            Civil Rights: civrgt
+            Civil Service: fed.wkr
+            Climate Change: Clim
+            Defense: Def
+            Deficit Reduction: Bud
+            Drugs: Drugs
+            Education K-12: Edu
+            Education - Higher Ed: Edu.Hi
+            Education - Student Loans: EDU.LOAN
+            Energy: Ene
+            Environment: Env
+            Foreign Affairs: fr
+            Guns: gun
+            Healthcare Reform: hc.ref
+            Health and Wellness: hc
+            High Technology: hi.tech
+            Housing: Hous
+            Immigration: Imm
+            Intellectual Property: ip
+            Iraq: fr.Iraq
+            Jobs and Entrepreneurship: emp
+            Labor: Lab
+            Medicare/Medicaid: mcar.caid
+            NASA: NASA
+            National Security: natsec
+            Nominations: Nom
+            Postal: pstl
+            Reproductive Health: rephe
+            Small Business: biz.sm
+            Social Security: ssec
+            Supreme Court: JUD
+            Taxes: Tax
+            Telecommunications: comm.telc
+            Tour: Tour
+            Trade: fr.trd
+            Transportation: Tra
+            Veterans: Vet
+            Voting Rights: VOTE
+            Opt out of communications: OptOut
+        - name: field_4815620B-0631-45D2-B52E-A9420A813DE5
+          selector: "#field_4815620B-0631-45D2-B52E-A9420A813DE5"
+          value: "Yes"
+          required: true
+          options:
+            "Yes": "Yes"
+            "No": "No"
+    - javascript:
+        - value: document.querySelector("#field_6FA5F44F-28CA-45FD-9142-3C29C257B186").value = document.querySelector("#field_6FA5F44F-28CA-45FD-9142-3C29C257B186").value.replace(/"/g, '');
+    - click_on:
+        - value: Submit
+          selector: div.buttonHolder input
+  success:
+    headers:
+      status: 200
+    body:
+      contains: Thank you

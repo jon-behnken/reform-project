@@ -1,0 +1,63 @@
+bioguide: M001159
+contact_form:
+  method: post
+  action: "/contact/#gf_11"
+  steps:
+    - visit: "http://mcmorris.house.gov/contact/"
+    - fill_in:
+        - name: input_16
+          selector: "#input_11_16"
+          value: $ADDRESS_ZIP5
+          required: true
+    - click_on:
+        - value: Next
+          selector: "#gform_next_button_11_17"
+    - find:
+        - selector: "#input_11_15"
+    - fill_in:
+        - name: input_15
+          selector: "#input_11_15"
+          value: $SUBJECT
+          required: true
+        - name: input_3
+          selector: "#input_11_3"
+          value: $EMAIL
+          required: true
+        - name: input_2
+          selector: "#input_11_2"
+          value: $MESSAGE
+          required: true
+        - name: input_5
+          selector: "#input_11_5"
+          value: $NAME_FIRST
+          required: true
+        - name: input_7
+          selector: "#input_11_7"
+          value: $NAME_LAST
+          required: true
+        - name: input_9
+          selector: "#input_11_9"
+          value: $ADDRESS_STREET
+          required: true
+        - name: input_11
+          selector: "#input_11_11"
+          value: $ADDRESS_CITY
+          required: true
+        - name: input_13
+          selector: "#input_11_13"
+          value: $ADDRESS_ZIP5
+          required: true
+    - javascript:
+        - value: document.querySelector("#input_11_2").value = document.querySelector("#input_11_2").value.replace(/"/g, '');
+    - recaptcha:
+        - value: true
+    - click_on:
+        - value: Submit
+          selector: "#gform_submit_button_11"
+    - find:
+        - selector: "#gform_confirmation_message_11"
+  success:
+    headers:
+      status: 200
+    body:
+      contains: Thanks for contacting us! We will get in touch with you shortly.

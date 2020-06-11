@@ -1,0 +1,178 @@
+bioguide: C001088
+contact_form:
+  method: post
+  action: "https://www.coons.senate.gov/contact/share-your-opinion"
+  steps:
+    - visit: "https://www.coons.senate.gov/contact/share-your-opinion"
+    - wait:
+        - value: 3
+    - javascript:
+        - value: "Array.prototype.forEach.call(document.querySelectorAll('style,[rel=\"stylesheet\"],[type=\"text/css\"]'), function(element){ try{ element.parentNode.removeChild(element) } catch(err){} });"
+    - fill_in:
+        - name: input_FF88275E-5056-A066-608F-B6EF2D7F5129
+          selector: "#input-FF88275E-5056-A066-608F-B6EF2D7F5129"
+          value: $NAME_FIRST
+          required: true
+        - name: input_FF8824D9-5056-A066-6042-D99D7CEAA2BC
+          selector: "#input-FF8824D9-5056-A066-6042-D99D7CEAA2BC"
+          value: $NAME_LAST
+          required: true
+        - name: input_FF882823-5056-A066-6032-C7EC37769783
+          selector: "#email"
+          value: $EMAIL
+          required: true
+        - name: input_FF882560-5056-A066-60DF-9C3CD4FE1ADF
+          selector: "#input-FF882560-5056-A066-60DF-9C3CD4FE1ADF"
+          value: $EMAIL
+          required: true
+        - name: input_FF882786-5056-A066-608C-BB8B5B68A0D4
+          selector: "#input-FF882786-5056-A066-608C-BB8B5B68A0D4"
+          value: $PHONE
+          required: true
+        - name: input_FF8827AE-5056-A066-6032-D1283B1BFC86
+          selector: "#input-FF8827AE-5056-A066-6032-D1283B1BFC86"
+          value: $ADDRESS_STREET
+          required: true
+        - name: input_FF882891-5056-A066-60BC-62384E97C895
+          selector: "#input-FF882891-5056-A066-60BC-62384E97C895"
+          value: $ADDRESS_CITY
+          required: true
+        - name: input_FF8824F9-5056-A066-6083-362FD35DCACE
+          selector: "#input-FF8824F9-5056-A066-6083-362FD35DCACE"
+          value: $ADDRESS_ZIP5
+          required: true
+        - name: input_FF88260A-5056-A066-6070-B369711DCB30
+          selector: "#input-FF88260A-5056-A066-6070-B369711DCB30"
+          value: $MESSAGE
+          required: true
+        - name: input_17D0611B-5056-A066-608B-2951F7B97365
+          selector: "#input-17D0611B-5056-A066-608B-2951F7B97365"
+          value: $SUBJECT
+          required: true
+    - select:
+        - name: input_FF882848-5056-A066-60D7-1A3C4C6ADC8D
+          selector: "#input-FF882848-5056-A066-60D7-1A3C4C6ADC8D"
+          value: $NAME_PREFIX
+          required: true
+          options:
+            - Mr.
+            - Ms.
+            - Mrs.
+            - Miss
+            - Mr. and Mrs.
+            - Dr.
+            - Prof.
+            - Senator
+            - Gov.
+            - Congressman
+            - Pastor
+            - Hon.
+            - Fr.
+            - Sister
+            - Bishop
+            - Rabbi
+            - Reverend
+            - Fleet Admiral
+            - Admiral
+            - 1st Lt.
+            - Vice Admiral
+            - LCDR
+            - Rear Admiral (upper half)
+            - Rear Admiral (lower half)
+            - Captain
+            - Commander
+            - Lieutenant Commander
+            - Lieutenant
+            - "Lieutenant, Junior Grade"
+            - Ensign
+            - Master Chief Petty Officer of the Navy
+            - Master Chief Petty Officer
+            - Senior Chief Petty Officer
+            - Chief Petty Officer
+            - Petty Officer First Class
+            - Petty Officer Second Class
+            - Petty Officer Third Class
+            - Seaman
+            - Seaman Apprentice
+            - Seaman Recruit
+            - Chief Warrant Officer
+            - Warrant Officer
+            - Sgt Major Of The Corps
+            - Sergeant Major
+            - Master Gunnery Sgt
+            - First Sergeant
+            - Master Sergeant
+            - Gunnery Sergeant
+            - Staff Sergeant
+            - Sergeant
+            - Corporal
+            - Lance Corporal
+            - Private First Class
+            - Private
+            - General of the Air Force
+            - General
+            - Lieutenant General
+            - Major General
+            - Brigadier General
+            - Colonel
+            - Lieutenant Colonel
+            - Major
+            - First Lieutenant
+            - Second Lieutenant
+            - Chief Master Sergeant of the Air Force
+            - Command Chief Master Sergeant
+            - Chief Master Sergeant
+            - Senior Master Sergeant
+            - Technical Sergeant
+            - Senior Airman
+            - Airman First Class
+            - Airman
+        - name: input_FF882414-5056-A066-60CD-8CEF5C561EBD
+          selector: "#input-FF882414-5056-A066-60CD-8CEF5C561EBD"
+          value: $TOPIC
+          required: true
+          options:
+            Abortion/Reproductive Health: ABORT
+            Agriculture: AGRI
+            Animal Welfare: ANIMAL
+            Banking and Financial Services: BANK
+            Budget and Appropriations: BUDGET
+            Climate Change: CLIMATE
+            Crime and Law Enforcement: CRIME
+            Defense: DEF
+            Deficit Reduction: DEFICIT
+            Domestic Violence: DOMVIO
+            Education: EDU
+            Energy: ENERGY
+            Environment: ENVIRO
+            Foreign Policy: FP
+            Guns: GUN
+            Health Care and Global Health: HEALTH
+            Homeland Security: HOMESEC
+            Housing: HOUSING
+            Immigration: IMMIG
+            Labor: LABOR
+            LGBTQ Equality: LGBTQ
+            Manufacturing: MANUF
+            Military Operations: MILOPS
+            Medicaid and Medicare: CMS
+            Prescription Drugs: DRUG
+            Seniors, Social Security, and Pensions: SENIOR
+            Taxes: TAX
+            Trade: TRADE
+            Transportation and Infrastructure: TRANSPO
+            Veterans: VET
+            Miscellaneous: MISC
+            National Service: NATSERV
+    - javascript:
+        - value: document.querySelector("#input-FF88260A-5056-A066-6070-B369711DCB30").value = document.querySelector("#input-FF88260A-5056-A066-6070-B369711DCB30").value.replace(/"/g, '');
+    - click_on:
+        - value: Submit
+          selector: input.btn
+    - wait:
+        - value: 3
+  success:
+    headers:
+      status: 200
+    body:
+      contains: Thank you

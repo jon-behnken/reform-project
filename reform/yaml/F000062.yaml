@@ -1,0 +1,85 @@
+bioguide: F000062
+contact_form:
+  method: post
+  action: ""
+  steps:
+    - visit: "https://www.feinstein.senate.gov/public/index.cfm/e-mail-me"
+    - fill_in:
+        - name: field_0C5A1392-6512-4FA5-A213-EB7E1CBAF1AD
+          selector: "#field_0C5A1392-6512-4FA5-A213-EB7E1CBAF1AD"
+          value: $NAME_FIRST
+          required: true
+        - name: field_AC791FC0-5E57-4F5E-88D4-6EF9E730F470
+          selector: "#field_AC791FC0-5E57-4F5E-88D4-6EF9E730F470"
+          value: $NAME_LAST
+          required: true
+        - name: field_844E2E93-7496-4372-BB04-D0CF157684F0
+          selector: "#field_844E2E93-7496-4372-BB04-D0CF157684F0"
+          value: $ADDRESS_STREET
+          required: true
+        - name: field_C44B713C-04AD-411A-9744-6E7F2FF71898
+          selector: "#field_C44B713C-04AD-411A-9744-6E7F2FF71898"
+          value: $ADDRESS_CITY
+          required: true
+        - name: field_64D2124B-A227-4F90-AD83-65DBC8175A69
+          selector: "#field_64D2124B-A227-4F90-AD83-65DBC8175A69"
+          value: $ADDRESS_ZIP5
+          required: true
+        - name: field_D065BDD9-7C1E-4D99-A50E-6A1ADAE8803B
+          selector: "#field_D065BDD9-7C1E-4D99-A50E-6A1ADAE8803B"
+          value: $EMAIL
+          required: true
+        - name: field_130638F0-2EEC-4C6B-83BE-11E83BB5CED3
+          selector: "#field_130638F0-2EEC-4C6B-83BE-11E83BB5CED3"
+          value: $MESSAGE
+          required: true
+    - choose:
+        - name: subject
+          selector: "[type='radio'][name='field_302E8A41-000D-419E-991E-40C7CB96F97C']"
+          value: $TOPIC
+          required: true
+          options:
+            Agriculture: ag
+            Animals: Anim
+            "Banking / Finance": BF
+            Budget: Budget
+            "Communications / FCC": Comm
+            Defense: Def
+            Education: Ed
+            Energy: Eng
+            Environment: Env
+            Foreign Affairs: FA
+            Gun Control: "Jud.Gun Control"
+            Health: Hlth
+            Homeland Security: Homeland Security
+            Housing: Hous
+            "Human Services / Welfare": Hmn
+            Immigration: Immig
+            Native American Affairs: Indian
+            Intelligence Committee: Intelligence Committ
+            "Judiciary, Narcotics / Illicit Drugs": Jud
+            Labor: Lab
+            LGBTQ: LGBTQ
+            "Science / Space / Technology": Science
+            Social Security: SSec
+            Taxes: Tax
+            Trade: Trade
+            Transportation: Trans
+            "U.S. Postal Service": USPS
+            Veterans: Vet
+            Water: "Water.Evn"
+    - click_on:
+        - selector: "#field_D9957C6C-C947-4802-92D4-F0AC28DD4B72_1"
+    - javascript:
+        - value: document.querySelector('#field_130638F0-2EEC-4C6B-83BE-11E83BB5CED3').value = document.querySelector('#field_130638F0-2EEC-4C6B-83BE-11E83BB5CED3').value.replace(/"/g, '');
+    - click_on:
+        - value: Submit
+          selector: div.buttonHolder input
+    - find:
+      - value: Thank you
+        selector: "div.form.odd.first.last"
+  success:
+    headers:
+      status: 200
+    body:
+      contains: Thank you for your message.

@@ -1,0 +1,14 @@
+#main-home-container{
+  padding-top: 50px;
+  text-align: center;
+  width: fit-content;
+  margin-left: 28%;
+}
+
+@media only screen
+  and (min-device-width: 1400px)
+  and (max-device-width: 1600px){
+    #main-home-container{
+      margin-left: 35%
+    }
+}

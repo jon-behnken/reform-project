@@ -1,0 +1,82 @@
+bioguide: J000293
+contact_form:
+  method: post
+  action: ""
+  steps:
+    - visit: "https://www.ronjohnson.senate.gov/public/index.cfm/email-the-senator"
+    - find:
+        - selector: '#field_AC036D04-8D06-4D4C-BCAD-4C0D66C7C34E'
+    - fill_in:
+        - name: field_AC036D04-8D06-4D4C-BCAD-4C0D66C7C34E
+          selector: "#field_AC036D04-8D06-4D4C-BCAD-4C0D66C7C34E"
+          value: $NAME_FIRST
+          required: true
+        - name: field_7EEF1FE1-3D81-4D19-A76F-CF33C2A30826
+          selector: "#field_7EEF1FE1-3D81-4D19-A76F-CF33C2A30826"
+          value: $NAME_LAST
+          required: true
+        - name: field_94D4B402-7674-450B-90A6-0078F36313FF
+          selector: "#field_94D4B402-7674-450B-90A6-0078F36313FF"
+          value: $ADDRESS_STREET
+          required: true
+        - name: field_7F0B420D-88DE-4310-973F-0D16736688CC
+          selector: "#field_7F0B420D-88DE-4310-973F-0D16736688CC"
+          value: $ADDRESS_CITY
+          required: true
+        - name: field_ACF15530-9220-49BE-86F4-5E8D51C49324
+          selector: "#field_ACF15530-9220-49BE-86F4-5E8D51C49324"
+          value: $ADDRESS_ZIP5
+          required: true
+        - name: field_4A5576FA-7ED1-4AD0-8F54-E50FD425EDEB
+          selector: "#field_4A5576FA-7ED1-4AD0-8F54-E50FD425EDEB"
+          value: $EMAIL
+          required: true
+        - name: field_FE704981-7F09-46C3-884F-1E10C4DE29EE
+          selector: "#field_FE704981-7F09-46C3-884F-1E10C4DE29EE"
+          value: $SUBJECT
+          required: true
+          options:
+            max_length: 500
+        - name: field_24B273CC-4761-49A6-AC70-CBCACCCAD0DA
+          selector: "#field_24B273CC-4761-49A6-AC70-CBCACCCAD0DA"
+          value: $MESSAGE
+          required: true
+    - select:
+        - name: field_F33B2309-B7AF-40CA-AAF8-E40952FFF259
+          selector: "#field_F33B2309-B7AF-40CA-AAF8-E40952FFF259"
+          value: $TOPIC
+          required: true
+          options:
+            Agriculture: AGR
+            Budget: BUD
+            Defense: DEF
+            "Economy & Jobs": ECO
+            Education and Labor: EDU
+            Energy: ENE
+            Environmental: ENV
+            Foreign Relations: INT
+            Health: HEA
+            Homeland Security: HOM
+            Immigration: IMM
+            Judiciary: JUD
+            Social Issues: SOC
+            Social Security: SSEC
+            Taxes and Trade: TAX
+            Telecommunications: TEL
+            Transportation: TRA
+            Veterans: VET
+            Welfare: WEL
+            Other: OTH
+    - javascript:
+        - value: document.querySelector("#field_24B273CC-4761-49A6-AC70-CBCACCCAD0DA").value = document.querySelector("#field_24B273CC-4761-49A6-AC70-CBCACCCAD0DA").value.replace(/"/g, '');
+    - javascript:
+      - value: document.querySelector("#g-recaptcha-response").style.display = "block";        
+    - recaptcha:
+        - value: true
+    - javascript:
+        - value: document.querySelector("input.btn.btn-primary").click()
+  success:
+    headers:
+      status: 200
+    body:
+      contains: Thank you

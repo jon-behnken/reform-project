@@ -1,0 +1,84 @@
+bioguide: H001056
+contact_form:
+  method: get
+  action: /Contact/ContactForm.htm
+  steps:
+    - visit: "http://herrerabeutler.house.gov/contact/"
+    - fill_in:
+        - name: zip5
+          selector: "#zip input[name='zip5']"
+          value: $ADDRESS_ZIP5
+          required: true
+        - name: zip4
+          selector: "#zip input[name='zip4']"
+          value: $ADDRESS_ZIP4
+          required: true
+    - click_on:
+        - value: Submit
+          selector: "#zip input[name='find']"
+    - find:
+        - selector: "#ctl00_ctl10_FirstName"
+    - fill_in:
+        - name: ctl00$ctl10$FirstName
+          selector: "#ctl00_ctl10_FirstName"
+          value: $NAME_FIRST
+          required: true
+        - name: ctl00$ctl10$LastName
+          selector: "#ctl00_ctl10_LastName"
+          value: $NAME_LAST
+          required: true
+        - name: ctl00$ctl10$Street
+          selector: "#ctl00_ctl10_Street"
+          value: $ADDRESS_STREET
+          required: true
+        - name: ctl00$ctl10$City
+          selector: "#ctl00_ctl10_City"
+          value: $ADDRESS_CITY
+          required: true
+        - name: ctl00$ctl10$Zip
+          selector: "#ctl00_ctl10_Zip"
+          value: $ADDRESS_ZIP5
+          required: true
+        - name: ctl00$ctl10$Phone
+          selector: "#ctl00_ctl10_Phone"
+          value: $PHONE
+          required: true
+        - name: ctl00$ctl10$Email
+          selector: "#ctl00_ctl10_Email"
+          value: $EMAIL
+          required: true
+        - name: ctl00$ctl10$Subject
+          selector: "#ctl00_ctl10_Subject"
+          value: $SUBJECT
+          required: true
+        - name: ctl00$ctl10$Body
+          selector: "#ctl00_ctl10_Body"
+          value: $MESSAGE
+          required: true
+    - select:
+        - name: ctl00$ctl10$PrefixList
+          selector: "#ctl00_ctl10_PrefixList"
+          value: $NAME_PREFIX
+          required: true
+          options:
+            - Mr.
+            - " Mrs."
+            - " Ms."
+    - check:
+        - name: ctl00$ctl10$ReplyChoice
+          selector: "#ctl00_ctl10_ReplyChoice_0"
+          value: Respond
+    - javascript:
+        - value: document.querySelector("#ctl00_ctl10_Body").value = document.querySelector("#ctl00_ctl10_Body").value.replace(/"/g, '');
+    - recaptcha:
+        - value: true
+    - click_on:
+        - value: Submit
+          selector: "#ctl00_ctl10_SubmitButton"
+    - find:
+        - selector: "#ctl00_ctl10_ConfirmationText"
+  success:
+    headers:
+      status: 200
+    body:
+      contains: Thank you for contacting my office.

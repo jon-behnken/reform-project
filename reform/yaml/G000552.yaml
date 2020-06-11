@@ -1,0 +1,104 @@
+bioguide: G000552
+contact_form:
+  method: get
+  action: /Contact/ContactForm.htm
+  steps:
+    - visit: "http://gohmert.house.gov/contact/" 
+    - fill_in:
+        - name: zip5
+          selector: "form.zipform input[name='zip5']"
+          value: $ADDRESS_ZIP5
+          required: true
+    - click_on:
+        - value: Submit
+          selector: "form.zipform input[type='submit'][value='Submit']"
+    - fill_in:
+        - name: ctl00$ctl10$FirstName
+          selector: "#ctl00_ctl10_FirstName"
+          value: $NAME_FIRST
+          required: true
+        - name: ctl00$ctl10$LastName
+          selector: "#ctl00_ctl10_LastName"
+          value: $NAME_LAST
+          required: true
+        - name: ctl00$ctl10$Street
+          selector: "#ctl00_ctl10_Street"
+          value: $ADDRESS_STREET
+          required: true
+        - name: ctl00$ctl10$City
+          selector: "#ctl00_ctl10_City"
+          value: $ADDRESS_CITY
+          required: true
+        - name: ctl00$ctl10$Zip
+          selector: "#ctl00_ctl10_Zip"
+          value: $ADDRESS_ZIP5
+          required: true
+        - name: ctl00$ctl10$Phone
+          selector: "#ctl00_ctl10_Phone"
+          value: $PHONE
+          required: true
+        - name: ctl00$ctl10$Email
+          selector: "#ctl00_ctl10_Email"
+          value: $EMAIL
+          required: true
+        - name: ctl00$ctl10$Subject
+          selector: "#ctl00_ctl10_Subject"
+          value: $SUBJECT
+          required: true
+        - name: ctl00$ctl10$Body
+          selector: "#ctl00_ctl10_Body"
+          value: $MESSAGE
+          required: true
+    - select:
+        - name: ctl00$ctl10$PrefixList
+          selector: "#ctl00_ctl10_PrefixList"
+          value: $NAME_PREFIX
+          required: true
+          options:
+            - Mr.
+            - Mrs.
+            - Dr.
+            - Ms.
+            - Hon.
+            - Rev.
+        - name: ctl00$ctl10$IssuesList
+          selector: "#ctl00_ctl10_IssuesList"
+          value: $TOPIC
+          required: true
+          options:
+            Agriculture: "15387"
+            Appropriations: "15400"
+            Armed Services: "15352"
+            Budget: "15396"
+            Commerce: "15291"
+            Education: "15386"
+            Energy: "15187"
+            Financial Services: "15145"
+            Foreign Affairs: "14994"
+            Homeland Security: "14821"
+            House Administration: "15394"
+            Immigration: "15004"
+            Judiciary Committee: "15389"
+            Labor: "14974"
+            Natural Resources Committee: "14933"
+            Oversight and Government Reform: "15398"
+            Science and Technology: "14918"
+            Small Business Administration: "15399"
+            Transportation and Infrastructure: "15384"
+            US Postal Service: "15393"
+            Veterans Affairs: "14820"
+            Ways and Means: "15395"
+    - check:
+        - name: ctl00$ctl10$ReplyChoice
+          selector: "#ctl00_ctl10_ReplyChoice_0"
+          value: Respond
+    - javascript:
+        - value: document.querySelector("#ctl00_ctl10_Body").value = document.querySelector("#ctl00_ctl10_Body").value.replace(/"/g, '');
+    - click_on:
+        - value: Submit
+          selector: "#ctl00_ctl10_SubmitButton"
+  success:
+    headers:
+      status: 200
+    body:
+      contains: This message is confirmation that your email has been received in my inbox

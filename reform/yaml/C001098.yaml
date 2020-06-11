@@ -1,0 +1,127 @@
+bioguide: C001098
+contact_form:
+  method: post
+  action: "/?p=form&id=16"
+  steps:
+    - visit: "https://www.cruz.senate.gov/?p=form&id=16"
+    - fill_in:
+        - name: FIRST
+          selector: "#gen-fieldid-3"
+          value: $NAME_FIRST
+          required: true
+        - name: LAST
+          selector: "#gen-fieldid-5"
+          value: $NAME_LAST
+          required: true
+        - name: ADDR1
+          selector: "#gen-fieldid-7"
+          value: $ADDRESS_STREET
+          required: true
+        - name: CITY
+          selector: "#gen-fieldid-11"
+          value: $ADDRESS_CITY
+          required: true
+        - name: ZIP
+          selector: "#gen-fieldid-15"
+          value: $ADDRESS_ZIP5
+          required: true
+        - name: PHONE
+          selector: "#gen-fieldid-17"
+          value: $PHONE
+          required: true
+        - name: EMAIL
+          selector: "#gen-fieldid-19"
+          value: $EMAIL
+          required: true
+        - name: SUBJECT
+          selector: "#gen-fieldid-23"
+          value: $SUBJECT
+          required: true
+        - name: MSG
+          selector: "#gen-fieldid-25"
+          value: $MESSAGE
+          required: true
+    - select:
+        - name: PREFIX
+          selector: "#gen-fieldid-1"
+          value: $NAME_PREFIX
+          required: true
+          options:
+            "-- please select a prefix --": "null"
+            Mr.: Mr.
+            Mrs.: Mrs.
+            Ms.: Ms.
+            Mr. and Mrs.: Mr. and Mrs.
+            Miss: Miss
+            Dr.: Dr.
+            Dr. and Mrs.: Dr. and Mrs.
+            Dr. and Mr.: Dr. and Mr.
+            Admiral: Admiral
+            Captain: Captain
+            Chief Master Sergeant: Chief Master Sergeant
+            Colonel: Colonel
+            Commander: Commander
+            Corporal: Corporal
+            Father: Father
+            Lieutenant: Lieutenant
+            Lieutenant Colonel: Lieutenant Colonel
+            Master Sergeant: Master Sergeant
+            Reverend: Reverend
+            Sergeant: Sergeant
+            Second Lieutenant: Second Lieutenant
+            Sergeant Major: Sergeant Major
+            Sister: Sister
+            Technical Sergeant: Technical Sergeant
+        - name: ISSUE
+          selector: "#gen-fieldid-21"
+          value: $TOPIC
+          required: true
+          options:
+            Agriculture: AG
+            Animal Welfare: ANI
+            Banking/Housing: BAN
+            Budget/Appropriations: BUD
+            Campaigns/Elections: CAMP
+            Constitutional/Civil Rights: CONST
+            Crime: CRI
+            Defense/National Security: DEF
+            Economy/Jobs: ECON
+            Education: EDU
+            Energy: ENE
+            Environment: ENV
+            Foreign Policy: FOR
+            Government Reform/Regulations: GOV
+            Health Care: HEA
+            Hurricane Harvey: HARVEY
+            Immigration: IMM
+            Judiciary: JUD
+            Labor: LAB
+            NASA: NASA
+            Science and Technology: SCI
+            Second Amendment: 2A
+            Social Issues: SOC
+            Social Security: SSEC
+            Taxes: TAX
+            Telecommunications: TELEC
+            Trade: TRD
+            Transportation: TRA
+            Veterans: VET
+            Welfare: WLF
+    - check:
+        - name: respond
+          selector: "input[type='radio'][name='RSP'][value='Yes']"
+          value: "Yes"
+    - javascript:
+        - value: document.querySelector("#gen-fieldid-25").value = document.querySelector("#gen-fieldid-25").value.replace(/"/g, '');
+    - javascript:
+        - value: "document.querySelector('#g-recaptcha-response').style.cssText = 'display: block; margin-top: 5em;';"
+    - recaptcha:
+        - value: true
+    - click_on:
+        - value: Submit
+          selector: "#block5 form input[name='formaction']"
+  success:
+    headers:
+      status: 200
+    body:
+      contains: Thank you

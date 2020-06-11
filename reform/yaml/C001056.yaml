@@ -1,0 +1,187 @@
+bioguide: C001056
+contact_form:
+  method: post
+  action: /contact
+  steps:
+    - visit: "https://www.cornyn.senate.gov/contact"
+    - find:
+        - selector: "#edit-submitted-last-name"
+    - check:
+        - name: "submitted[lets_get_started]"
+          selector: "#edit-submitted-lets-get-started-1"
+          value: "getintouch"
+          required: true
+    - fill_in:
+        - name: "submitted[first_name]"
+          selector: "#edit-submitted-first-name"
+          value: $NAME_FIRST
+          required: true
+        - name: "submitted[last_name]"
+          selector: "#edit-submitted-last-name"
+          value: $NAME_LAST
+          required: true
+        - name: "submitted[email]"
+          selector: "#edit-submitted-email"
+          value: $EMAIL
+          required: true
+    - uncheck:
+        - name: "submitted[e_newsletter_opt_in][enewsletter_optin]"
+          selector: "#edit-submitted-e-newsletter-opt-in-1"
+          value: "enewsletter_optin"
+          required: true
+    - click_on:
+        - name: "op"
+          selector: "#edit-webform-ajax-next-5099"
+    - find:
+        - selector: "#edit-submitted-please-select-and-issue-youd-like-to-discuss"
+    - select:
+        - name: "submitted[please_select_and_issue_youd_like_to_discuss]"
+          selector: "#edit-submitted-please-select-and-issue-youd-like-to-discuss"
+          value: $TOPIC
+          required: true
+          options:
+            "abortion": "Abortion"
+            "agriculture": "Agriculture"
+            "arts_and_humanities": "Arts and Humanities"
+            "banking": "Banking"
+            "budget": "Budget"
+            "criminal_justice": "Criminal Justice"
+            "defense": "Defense"
+            "education": "Education"
+            "election_reform": "Election Reform"
+            "energy": "Energy"
+            "environment": "Environment"
+            "fema": "FEMA"
+            "finance": "Finance"
+            "firearms": "Firearms"
+            "foreign_affairs": "Foreign Affairs"
+            "government_operations/Affairs": "Government Operations/Affairs"
+            "health_care": "Health Care"
+            "housing": "Housing"
+            "immigration": "Immigration"
+            "interior": "Interior"
+            "judiciary": "Judiciary"
+            "labor": "Labor"
+            "law_enforcement": "Law Enforcement"
+            "medicare": "Medicare"
+            "religion": "Religion"
+            "service_academies": "Service Academies"
+            "small_business": "Small Business"
+            "social_security": "Social Security"
+            "taxes": "Taxes/Economy"
+            "telecommunications": "Telecommunications"
+            "trade": "Trade"
+            "transportation": "Transportation"
+            "veterans": "Veterans"
+            "welfare": "Welfare"
+    - fill_in:
+        - name: "submitted[please_write_us_a_brief_message]"
+          selector: "#edit-submitted-please-write-us-a-brief-message"
+          value: $MESSAGE
+          required: true
+        - name: "submitted[phone_number]"
+          selector: "#edit-submitted-phone-number"
+          value: $PHONE
+          required: true
+        - name: "submitted[address][thoroughfare]"
+          selector: "#edit-submitted-address-thoroughfare"
+          value: $ADDRESS_STREET
+          required: false
+        - name: "submitted[address][locality]"
+          selector: "#edit-submitted-address-locality"
+          value: $ADDRESS_CITY
+          required: false
+    - select:
+        - name: "submitted[address][administrative_area]"
+          selector: "#edit-submitted-address-administrative-area"
+          value: $ADDRESS_STATE_POSTAL_ABBREV
+          required: false
+          options:
+            "AL": "Alabama"
+            "AK": "Alaska"
+            "AZ": "Arizona"
+            "AR": "Arkansas"
+            "CA": "California"
+            "CO": "Colorado"
+            "CT": "Connecticut"
+            "DE": "Delaware"
+            "DC": "District of Columbia"
+            "FL": "Florida"
+            "GA": "Georgia"
+            "HI": "Hawaii"
+            "ID": "Idaho"
+            "IL": "Illinois"
+            "IN": "Indiana"
+            "IA": "Iowa"
+            "KS": "Kansas"
+            "KY": "Kentucky"
+            "LA": "Louisiana"
+            "ME": "Maine"
+            "MD": "Maryland"
+            "MA": "Massachusetts"
+            "MI": "Michigan"
+            "MN": "Minnesota"
+            "MS": "Mississippi"
+            "MO": "Missouri"
+            "MT": "Montana"
+            "NE": "Nebraska"
+            "NV": "Nevada"
+            "NH": "New Hampshire"
+            "NJ": "New Jersey"
+            "NM": "New Mexico"
+            "NY": "New York"
+            "NC": "North Carolina"
+            "ND": "North Dakota"
+            "OH": "Ohio"
+            "OK": "Oklahoma"
+            "OR": "Oregon"
+            "PA": "Pennsylvania"
+            "RI": "Rhode Island"
+            "SC": "South Carolina"
+            "SD": "South Dakota"
+            "TN": "Tennessee"
+            "TX": "Texas"
+            "UT": "Utah"
+            "VT": "Vermont"
+            "VA": "Virginia"
+            "WA": "Washington"
+            "WV": "West Virginia"
+            "WI": "Wisconsin"
+            "WY": "Wyoming"
+            "AA": "Armed Forces (Americas)"
+            "AE": "Armed Forces (Europe, Canada, Middle East, Africa)"
+            "AP": "Armed Forces (Pacific)"
+            "AS": "American Samoa"
+            "FM": "Federated States of Micronesia"
+            "GU": "Guam"
+            "MH": "Marshall Islands"
+            "MP": "Northern Mariana Islands"
+            "PW": "Palau"
+            "PR": "Puerto Rico"
+            "VI": "Virgin Islands"
+    - fill_in:
+        - name: "submitted[address][postal_code]"
+          selector: "#edit-submitted-address-postal-code"
+          value: $ADDRESS_ZIP5
+          required: true
+    - javascript:
+        - value: document.querySelector("#edit-submitted-please-write-us-a-brief-message").value = document.querySelector("#edit-submitted-please-write-us-a-brief-message").value.replace(/"/g, '');
+    - javascript:
+        - value: jQuery('.button-primary').attr('disabled',false);
+    - find:
+        - selector: "#edit-webform-ajax-next-5099--2"
+    - click_on:
+        - name: "op"
+          selector: "#edit-webform-ajax-next-5099--2"
+    - find:
+        - selector: "#edit-webform-ajax-submit-5099"
+    - click_on:
+        - name: "op"
+          selector: "#edit-webform-ajax-submit-5099"
+    - wait:
+        - value: 5
+  success:
+    headers:
+      status: 200
+    body:
+      contains: "Thank you, we appreciate hearing from you"

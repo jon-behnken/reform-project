@@ -1,0 +1,167 @@
+bioguide: F000455
+contact_form:
+  method: post
+  action: /email-me/
+  steps:
+    - visit: "https://fudgeforms.house.gov/email-me"
+    - fill_in:
+        - name: zipcode
+          selector: "#zipcode"
+          value: $ADDRESS_ZIP5
+          required: true
+        - name: zipfour
+          selector: "#zipfour"
+          value: $ADDRESS_ZIP4
+          required: true
+    - click_on:
+        - value: Go to Form
+          selector: "#zipauthform input.button"
+    - fill_in:
+        - name: prefix
+          selector: "#req_prefix"
+          value: $NAME_PREFIX
+          required: true
+        - name: firstname
+          selector: "#req_firstname"
+          value: $NAME_FIRST
+          required: true
+        - name: lastname
+          selector: "#req_lastname"
+          value: $NAME_LAST
+          required: true
+        - name: street
+          selector: "#req_street"
+          value: $ADDRESS_STREET
+          required: true
+        - name: city
+          selector: "#req_city"
+          value: $ADDRESS_CITY
+          required: true
+        - name: em-address
+          selector: "#req_email"
+          value: $EMAIL
+          required: true
+        - name: phone
+          selector: "#req_phone"
+          value: $PHONE
+          required: true
+        - name: message
+          selector: "#req_message"
+          value: $MESSAGE
+          required: true
+    - select:
+        - name: state
+          selector: "#req_state"
+          value: $ADDRESS_STATE_POSTAL_ABBREV
+          required: true
+          options:
+            Ohio: OH
+            Alaska: AK
+            Alabama: AL
+            Arkansas: AR
+            Arizona: AZ
+            California: CA
+            Colorado: CO
+            Connecticut: CT
+            District of Columbia: DC
+            Delaware: DE
+            Florida: FL
+            Georgia: GA
+            Hawaii: HI
+            Iowa: IA
+            Idaho: ID
+            Illinois: IL
+            Indiana: IN
+            Kansas: KS
+            Kentucky: KY
+            Louisiana: LA
+            Massachusetts: MA
+            Maryland: MD
+            Maine: ME
+            Michigan: MI
+            Minnesota: MN
+            Missouri: MO
+            Mississippi: MS
+            Montana: MT
+            North Carolina: NC
+            North Dakota: ND
+            Nebraska: NE
+            New Hampshire: NH
+            New Jersey: NJ
+            New Mexico: NM
+            Nevada: NV
+            New York: NY
+            Oklahoma: OK
+            Oregon: OR
+            Pennsylvania: PA
+            Puerto Rico: PR
+            Rhode Island: RI
+            South Carolina: SC
+            South Dakota: SD
+            Tennessee: TN
+            Texas: TX
+            Utah: UT
+            Virginia: VA
+            Vermont: VT
+            Washington: WA
+            Wisconsin: WI
+            West Virginia: WV
+            Wyoming: WY
+        - name: subject
+          selector: "#req_subject"
+          value: $TOPIC
+          required: true
+          options:
+            Agriculture: Agriculture
+            Armed Services: Armed Services
+            Animal Welfare: Animal Welfare
+            Budget/ Appropriations: Budget/ Appropriations
+            Casework: Casework
+            Civil Liberties: Civil Liberties
+            Congratulations/Thank you: Congratulations/Thank you
+            Consumer Protection: Consumer Protection
+            Criminal Justice: Criminal Justice
+            Defense: Defense
+            Economy: Economy
+            Education: Education
+            Energy: Energy
+            Environment: Environment
+            Financial Services: Financial Service
+            Foreign Affairs: Foreign Affairs
+            Grants: Grants
+            Gun Control: Gun Control
+            Health: Health 
+            Help with Federal Agency: Help with Federal Agency
+            Homeland Security: Homeland Security
+            Housing and Utilities: Housing and Utilities
+            Immigration: Immigration
+            Internal Revenue Service (IRS): Internal Revenue Service
+            Jobs and Employment: Jobs and Employment
+            Judiciary: Judiciary
+            Labor/ Workforce Protections: Labor/ Workforce Protections
+            Medicare and Medicaid: Medicare and Medicaid
+            Military Academy Nomination: Military Academy Nomination
+            Other: Other
+            Pension: Pension
+            Poverty: Poverty
+            Reproductive Rights: Reproductive Rights
+            Science, Space, and Technology: Science, Space, and Technology
+            Small Business: Small Business 
+            Social Security: Social Security
+            Taxes: Taxes
+            Telecommunications: Telecommunications
+            Trade: Trade
+            Transportation and Infrastructure: Transportation and Infrastructure
+            Veteran Affairs: Veteran Affairs
+            Voting Rights: Voting Rights
+            U.S. Passports: U.S. Passports
+    - javascript:
+        - value: document.querySelector("#req_message").value = document.querySelector("#req_message").value.replace(/"/g, '');
+    - click_on:
+        - value: Submit
+          selector: "#submitButton"
+  success:
+    headers:
+      status: 200
+    body:
+      contains: Thank You

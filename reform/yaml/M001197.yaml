@@ -1,0 +1,95 @@
+bioguide: M001197
+contact_form:
+  method: post
+  action: ""
+  steps:
+    - visit: "https://www.mcsally.senate.gov/contact_martha"
+    - fill_in:
+        - name: "input_2552BCF3-FAD0-1BC9-D682-DF689A900D63"
+          selector: "#input-2552BCF3-FAD0-1BC9-D682-DF689A900D63"
+          value: $NAME_FIRST
+          required: true
+        - name: "input_2552BD25-CCF6-C7E1-2E3E-A83AED710014"
+          selector: "#input-2552BD25-CCF6-C7E1-2E3E-A83AED710014"
+          value: $NAME_LAST
+          required: true
+        - name: "input_256B0385-AAE6-AEDC-BD64-630982B4DB23"
+          selector: "#input-256B0385-AAE6-AEDC-BD64-630982B4DB23"
+          value: $ADDRESS_STREET
+          required: true
+        - name: "input_256B044F-F418-7B02-9852-138D0CD28E1C"
+          selector: "#input-256B044F-F418-7B02-9852-138D0CD28E1C"
+          value: $ADDRESS_CITY
+          required: true
+        - name: "input_256B04B4-9424-36CD-1C40-F78D2EB5BBA8"
+          selector: "#input-256B04B4-9424-36CD-1C40-F78D2EB5BBA8"
+          value: $ADDRESS_ZIP5
+          required: true
+        - name: "input_25820E0D-9DFF-E5DE-4A29-A850B3482018"
+          selector: "#input-25820E0D-9DFF-E5DE-4A29-A850B3482018"
+          value: $PHONE
+          required: true
+        - name: "input_2582CF6B-C7DF-9A6B-D70E-C5C4766097EB"
+          selector: "#input-2582CF6B-C7DF-9A6B-D70E-C5C4766097EB"
+          value: $EMAIL
+          required: true
+        - name: "input_258E2C27-C60C-DB4C-502C-37C7584FA8E4"
+          selector: "#input-258E2C27-C60C-DB4C-502C-37C7584FA8E4"
+          value: $SUBJECT
+          required: true
+        - name: "input_25934566-F496-7BE6-36BB-E01CF07E454D"
+          selector: "#input-25934566-F496-7BE6-36BB-E01CF07E454D"
+          value: $MESSAGE
+          required: true
+    - select:
+        - name: "input_2552BCBC-0320-DB8E-4A52-C8668F1C20D7"
+          selector: "#input-2552BCBC-0320-DB8E-4A52-C8668F1C20D7"
+          value: $NAME_PREFIX
+          required: true
+          options:
+            "Mr.": "Mr."
+            "Mrs.": "Mrs."
+            "Ms.": "Ms."
+            "Mr. and Mrs.": "Mr. and Mrs."
+        - name: "input_256B0480-B0B5-D262-C4E6-833BEBDE9162"
+          selector: "#input-256B0480-B0B5-D262-C4E6-833BEBDE9162"
+          value: $ADDRESS_STATE_POSTAL_ABBREV
+          required: true
+          options: US_STATES
+        - name: "input_258FD247-E7D1-F6B1-9176-737D1C741302"
+          selector: "#input-258FD247-E7D1-F6B1-9176-737D1C741302"
+          value: $TOPIC
+          required: true
+          options:
+            "Abortion": "ABR"
+            "Aging": "AGE"
+            "Agriculture": "AGR"
+            "Animal Welfare": "AN"
+            "Banking": "BANK"
+            "Casework": "CASE"
+            "Civil Rights": "CIVIL"
+            "Defense": "DEF"
+            "Drugs": "DRUG"
+            "Education": "EDU"
+            "Environment": "ENV"
+            "Healthcare": "HEA"
+            "Housing": "HUD"
+            "Immigration": "IMM"
+            "Social Security": "SSEC"
+            "Medicare/Medicaid": "MEDI"
+            "Taxes": "TAX"
+            "Trade": "TRADE"
+            "Transportation": "TRA"
+            "Veterans": "VET"
+            "Welfare": "WEL"
+            "2nd Amendment": "GUN"
+            "Other": "Other"
+    - javascript:
+       - value: "document.querySelector('.btn').click();"
+    - wait:
+        - value: 10
+  success:
+    headers:
+      status: 200
+    body:
+      contains: "Thank you"

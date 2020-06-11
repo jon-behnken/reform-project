@@ -1,0 +1,65 @@
+bioguide: K000380
+contact_form:
+  method: post
+  action: "/contact/email-me/#gf_6"
+  steps:
+    - visit: "http://dankildee.house.gov/contact/email-me/"
+    - fill_in:
+        - name: input_1
+          selector: "#input_6_1"
+          value: $ADDRESS_ZIP5
+          required: true
+    - click_on:
+        - value: Go To Next Step
+          selector: "#gform_next_button_6_2"
+    - find:
+        - selector: "#input_6_3_3"
+    - fill_in:
+        - name: input_3.3
+          selector: "#input_6_3_3"
+          value: $NAME_FIRST
+          required: true
+        - name: input_3.6
+          selector: "#input_6_3_6"
+          value: $NAME_LAST
+          required: true
+        - name: input_4.1
+          selector: "#input_6_4_1"
+          value: $ADDRESS_STREET
+          required: true
+        - name: input_4.3
+          selector: "#input_6_4_3"
+          value: $ADDRESS_CITY
+          required: true
+        - name: input_4.5
+          selector: "#input_6_4_5"
+          value: $ADDRESS_ZIP5
+          required: true
+        - name: input_5
+          selector: "#input_6_5"
+          value: $EMAIL
+          required: true
+        - name: input_6
+          selector: "#input_6_6"
+          value: $PHONE
+          required: true
+        - name: input_11
+          selector: "#input_6_11"
+          value: $SUBJECT
+          required: true
+        - name: input_12
+          selector: "#input_6_12"
+          value: $MESSAGE
+          required: true
+    - javascript:
+        - value: document.querySelector("#input_6_12").value = document.querySelector("#input_6_12").value.replace(/"/g, '');
+    - click_on:
+        - value: Send Email
+          selector: "#gform_submit_button_6"
+    - find:
+        - selector: "#gform_confirmation_message_6"
+  success:
+    headers:
+      status: 200
+    body:
+      contains: "Thanks for contacting us! We will get in touch with you shortly."

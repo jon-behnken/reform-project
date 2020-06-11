@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='search-style.css') }}">
+<script type="text/javascript" src="{{ url_for('static', filename='search.js') }}"></script>
+<div id='home-sidepanel' class='sidepanel'>
+  <label for="topic-select">policy categories</label>
+  <input type="text" id="topic-select">
+</div>
+<div id='main-datatable-container' class='container'>
+  <table id="test-table">
+    <thead>
+      <tr>
+          <th>Policy tags</th>
+          <th>Introduced</th>
+          <th>Bill Number</th>
+          <th>Bill Name</th>
+          <th></th>
+      </tr>
+    </thead>
+  </table>
+</div>
+{% endblock %}
