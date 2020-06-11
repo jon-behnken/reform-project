@@ -1,14 +1,15 @@
 window.onload = function() {
     if (window.jQuery) {
         // jQuery is loaded
-        alert("jQuery loaded!");
+        console.log("jQuery loaded!");
     } else {
         // jQuery is not loaded
-        alert("jQuery failed to load");
+        console.log("jQuery failed to load");
     }
 }
 
 $(function() {
+
   $('#topic-select').selectize({
   delimiter: ',',
   persist: false,
@@ -42,8 +43,9 @@ $('#topic-select').on('change input', function(){
     let topicQueryDisplayString = topicQueryArr.join(', ');
     console.log(topicQueryString)
     if(topicQueryString != null && topicQueryString != ''){
+      console.log('hi');
       $.ajax({
-          url: 'http://trackthechange.co/search/t/'+topicQueryString,
+          url: 'http://0.0.0.0:5000/search/t/'+topicQueryString,
           type: 'GET',
           dataType: 'json',
           success: function(data) {

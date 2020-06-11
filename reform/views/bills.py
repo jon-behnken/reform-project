@@ -4,12 +4,14 @@ from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for, current_app
 )
 
+from reform import app
+
 bill = Blueprint('bill', __name__, url_prefix='/bill')
 
 @bill.route('/<bill_id>', methods=['GET', 'POST'])
 def show_bill(bill_id):
-    propublica_api_key = current_app.config['PROPUBLICA_API_KEY']
-    govtrack_api_key = current_app.config['GOVTRACK_API_KEY']
+    propublica_api_key = app.config['PROPUBLICA_API_KEY']
+    govtrack_api_key = app.config['GOVTRACK_API_KEY']
     bill_data = generate_bill_data(propublica_api_key, bill_id)
     bill_type = bill_data[0]['bill_type']
     bill_number = bill_data[0]['number'].split('.')[-1]
@@ -36,13 +38,13 @@ def show_bill(bill_id):
 
 @bill.route('/<bill_id>/history', methods=['GET', 'POST'])
 def get_bill_history(bill_id):
-    api_key = current_app.config['PROPUBLICA_API_KEY']
+    api_key = app.config['PROPUBLICA_API_KEY']
     bill_data = generate_bill_data(api_key, bill_id)
     bill_history = bill_data[0]['actions']
     return json.dumps(bill_history)
 
 @bill.route('/members/all/<state_id>', methods=['GET', 'POST'])
 def get_all_members(state_id):
-    api_key = current_app.config['PROPUBLICA_API_KEY']
+    api_key = app.config['PROPUBLICA_API_KEY']
     all_members = get_members_by_state(api_key, state_id)
     return json.dumps(all_members)
