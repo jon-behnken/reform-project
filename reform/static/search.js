@@ -77,9 +77,6 @@ $('#topic-select').on('change input', function(){
           // beforeSend: setHeader
             });
 
-          // function setHeader(xhr) {
-          // xhr.setRequestHeader('X-API-Key', '55x8VRxY10PA8kBJICoD1Uv3HzYfkfCP7TyuGtzK');
-          // }
         }
         });
 // $(document).ready( function () {
