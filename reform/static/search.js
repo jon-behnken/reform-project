@@ -45,7 +45,7 @@ $('#topic-select').on('change input', function(){
     if(topicQueryString != null && topicQueryString != ''){
       console.log('hi');
       $.ajax({
-          url: 'http://0.0.0.0:5000/search/t/'+topicQueryString,
+          url: 'http://trackthechange.co/search/t/'+topicQueryString,
           type: 'GET',
           dataType: 'json',
           success: function(data) {
