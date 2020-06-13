@@ -8,6 +8,9 @@ from flask import (
 from reform import app
 
 search = Blueprint('search', __name__, url_prefix='/search')
+print(app.config)
+print('\n\n')
+print(current_app.config)
 
 @search.route('/', methods=['GET', 'POST'])
 def show_search():
