@@ -22,7 +22,6 @@ def show_bill(bill_id):
     bill_summary = bill_data[0]['summary']
     bill_history = bill_data[0]['actions']
     bill_sponsor_data = get_member_by_id(propublica_api_key, bill_data[0]['sponsor_id'])
-    print(bill_sponsor_data[0])
     bill_sponsor_twitter = bill_sponsor_data[0]['twitter_account']
     bill_sponsor_contact_url = bill_sponsor_data[0]['contact_url']
     bill_sponsor_json = json.dumps([{   'sponsor_id' : bill_data[0]['sponsor_id'],
