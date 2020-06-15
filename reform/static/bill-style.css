@@ -200,6 +200,11 @@ span.bill-intro-date{
   margin: 0;
 }
 
+.sponsor-card h1{
+  font-size: 20px;
+  margin: 0px;
+}
+
 .senator-card p{
   font-size: 14px;
   margin: 0;
