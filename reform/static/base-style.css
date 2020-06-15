@@ -2,7 +2,7 @@ body{
   font-family: 'Roboto Mono', monospace;
   background: #fff6f0;
   margin: 0;
-  padding: 10px;
+  padding: env(safe-area-inset, 10px);
 }
 
 /* ----------- iPhone X ----------- */
@@ -11,7 +11,7 @@ body{
 @media only screen
   and (min-device-width: 375px)
   and (max-device-width: 896px)
-  and (-webkit-min-device-pixel-ratio: 3) {
+  and (-webkit-min-device-pixel-ratio: 2) {
 
     h1{
       font-size: 4em;
