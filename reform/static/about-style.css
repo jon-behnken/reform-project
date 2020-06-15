@@ -17,6 +17,14 @@
       border: dashed;
     }
 
+    .container-versions p::before{
+      content: attr(data-date);
+        font-size: 28px;
+        padding: 10px;
+        position: relative;
+        padding-right: 15%;
+    }
+
 
   }
 
@@ -35,7 +43,7 @@
 
 .container-versions p::before{
   content: attr(data-date);
-    font-size: 14px;
+    font-size: 18px;
     padding: 10px;
     position: relative;
     padding-right: 15%;
