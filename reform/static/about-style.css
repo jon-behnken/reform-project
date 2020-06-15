@@ -35,7 +35,7 @@
 
 .container-versions p::before{
   content: attr(data-date);
-    font-size: 8px;
+    font-size: 14px;
     padding: 10px;
     position: relative;
     padding-right: 15%;
