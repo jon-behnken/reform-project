@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %} About {% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='about-style.css') }}">
+<div id="main-about-container">
+  <h2>THE IDEA</h2>
+  <div class="container">
+    <p>The idea for Track The Change started with the recognition that our ability to effectively communicate with our legislative
+      leaders is being frustrated by the transformations brought on by the digital age. </p><p>There are so many channels, platforms and
+      social media services, some find it difficult to swim through the sea of usernames in an effort to be heard. Track The Change
+      has a simple goal: <b>provide a unified service that synthesizes the disparate contact information and methods for Congress men
+      and women.</b> As a little bonus, I've also added a basic bill searching tool that will show you recently drafted legislation so you
+      can contact your representatives about something substantive should you feel inclined to do so.
+  </p>
+  <div class="container-the-data">
+      <h2>THE DATA</h2>
+      <p>Most of the legislative data such as bill numbers, bill text and history is sourced from <a href="https://projects.propublica.org/api-docs/congress-api/">ProPublica's Congress API</a>.</p>
+      <p>The full text of a bill, when available, is retrieved from <a href="https://www.govinfo.gov/app/collection/bills">GovTrack's bill repository</a>.  </p>
+      <p>Contact information for legislators is sourced in large part with help from the <a href="https://theunitedstates.io/contact-congress/">Contact Congress</a> project.
+  </div>
+  <div class="container-versions">
+      <h2>VERSIONS</h2>
+      <p id="initial-release" data-date="June 2020">Initial release</p>
+      <p data-date="Fall 2020">Add support for House members and add support for preformatted contact forms </p>
+  </div>
+
+</div>
+
+{% endblock %}

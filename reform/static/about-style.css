@@ -1,0 +1,43 @@
+
+/* ----------- iPhone X ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 812px)
+  and (-webkit-min-device-pixel-ratio: 3) {
+
+    .container p {
+      font-size: 14px;
+      text-align: justify;
+      padding: 20px;
+    }
+
+    .container-the-data{
+      background: #fff;
+      border: dashed;
+    }
+
+
+  }
+
+#main-about-container h2{
+  text-align: center;
+}
+
+#initial-release{
+    background: #6eff74;
+    border-radius: 10px;
+}
+
+.container-versions p{
+  text-align: left;
+}
+
+.container-versions p::before{
+  content: attr(data-date);
+    font-size: 8px;
+    padding: 10px;
+    position: relative;
+    padding-right: 15%;
+}

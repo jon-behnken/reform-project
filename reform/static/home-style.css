@@ -1,14 +1,76 @@
+/* ----------- animation ----------- */
+
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-moz-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-o-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-ms-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+/* -----------  ###  ----------- */
+
+
+/* -----------  main  ----------- */
+
 #main-home-container{
   padding-top: 50px;
   text-align: center;
-  width: fit-content;
-  margin-left: 28%;
+  width: 60%;
+  margin: auto;
+}
+
+#isbell-quote-container{
+  animation: fadeIn ease 5s;
+}
+/* -----------  ###  ----------- */
+
+
+/* ----------- iPhone X ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 812px)
+  and (-webkit-min-device-pixel-ratio: 3) {
+
+    #isbell-quote-container p:first-of-type{
+      font-size: 2em;
+    }
+
+    #isbell-quote-container p:nth-of-type(2){
+      font-size: 20px;
+      text-align: right;
+    }
+
+
+  }
+
 }
 
 @media only screen
-  and (min-device-width: 1400px)
+  and (min-device-width: 1300px)
   and (max-device-width: 1600px){
-    #main-home-container{
-      margin-left: 35%
+
+    #isbell-quote-container p:nth-of-type(2){
+      font-size: 12px;
+      text-align: right;
     }
+
 }

@@ -5,6 +5,24 @@ body{
   padding: 10px;
 }
 
+/* ----------- iPhone X ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 812px)
+  and (-webkit-min-device-pixel-ratio: 3) {
+
+    h1{
+      font-size: 4em;
+    }
+
+    nav > ul > li > a {
+      font-size: 2em;
+    }
+
+}
+
 nav{
   text-align: center;
 }

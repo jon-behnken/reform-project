@@ -37,11 +37,13 @@ def log_activity(response):
 from views.landing import landing
 from views.search import search
 from views.bills import bill
+from views.about import about_bp
 
 #register views
 app.register_blueprint(landing)
 app.register_blueprint(search)
 app.register_blueprint(bill)
+app.register_blueprint(about_bp)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
