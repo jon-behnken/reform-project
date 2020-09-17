@@ -25,20 +25,15 @@ $(function() {
   create: false
 });
 
-// var resultsTable = $("#test-table").DataTable();
 
 $('#topic-select').on('change input', function(){
     topicArray = {  1 : 'police',
                     2: 'criminal justice',
                     3 : 'prison'  }
 
-    // let topicQueryArr = this.value.map(function(val){
-    //   return topicArray[topicValue];
-    // })
     let topicQueryArr = JSON.parse("[" + this.value + "]").map(function(val){
       return topicArray[val];
     });
-    // console.log(topicQueryArr);
     let topicQueryString = topicQueryArr.join(' ');
     let topicQueryDisplayString = topicQueryArr.join(', ');
     console.log(topicQueryString)
@@ -79,6 +74,4 @@ $('#topic-select').on('change input', function(){
 
         }
         });
-// $(document).ready( function () {
-//   $('#test-table').DataTable();
 });

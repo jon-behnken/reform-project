@@ -12,11 +12,6 @@ proPublica_SENATE_member_id_url = 'https://api.propublica.org/congress/v1/member
 proPublica_HOUSE_member_url = 'https://api.propublica.org/congress/v1/members/{chamber}/{state}/{district}/current.json'
 
 govtrack_bill_url = 'https://www.govinfo.gov/link/bills/116/{}/{}?link-type=html'
-# proPublica_url = 'https://api.propublica.org/congress/v1/members/senate/NY/current.json'
-
-# response = requests.get(proPublica_url, headers=proPublica_header)
-# response_json = response.json()
-# results = response_json['results']
 
 def generate_datatable_JSON(api_key, topicQueryString):
     proPublica_DataTable_request_url = proPublica_DataTable_url.format(topicQueryString)

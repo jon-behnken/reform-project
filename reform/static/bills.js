@@ -154,7 +154,6 @@ $('#state-select').selectize({
 
 function showActiveTab(t){
   let allTabs = document.querySelectorAll('.'+t.className)
-  // console.log(Array.from(allTabs));
   allTabs.forEach(function(i){
     $('#'+i.id).removeClass('active');
   });
