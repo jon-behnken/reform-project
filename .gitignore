@@ -6,7 +6,10 @@ __pycache__/
 config.py
 
 #logging
-logging/
+logs/
 
 #setup
 setup.cfg
+
+#for mac development
+.DS_Store

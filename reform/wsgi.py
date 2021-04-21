@@ -1,4 +1,5 @@
-from reform import app
+import reform
+import waitress
 
 if __name__ == "__main__":
-    app.run()
+    waitress.serve(reform.create_app(), port=8080)
