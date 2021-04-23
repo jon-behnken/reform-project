@@ -37,11 +37,8 @@ The tests are located in the `tests` folder. To test the backend functions that 
 Currently TTC has two main views -- the search view and the bills view. Both views are fairly straightforward.
 
 ### Search
-
 - **Accessed by:** front-end
-
 - **Arguments:** str
-
 - **Returns:** JSON
 
   
@@ -55,9 +52,9 @@ Using jQuery, the `topic-select` element is bound to a function that passes the 
   
 
 `show_bill(bill_id)`
-**Accessed by:** front-end
-**Arguments:** str
-**Returns**: renders a Flask template
+- **Accessed by:** front-end
+- **Arguments:** str
+- **Returns**: renders a Flask template
 
   
 
@@ -66,9 +63,9 @@ Each row in the DataTable rendered by the `search` view contains a URL that refe
   
 
 `get_bill_history(bill_id)`
-**Accessed by:** front-end
-**Arguments:** str
-**Returns**: JSON
+- **Accessed by:** front-end
+- **Arguments:** str
+- **Returns**: JSON
 
   
 
@@ -77,9 +74,9 @@ This view function uses the ProPublica API to generate a history of votes and ac
   
 
 `get_all_members(state_id)`
-**Accessed by:** front-end
-**Arguments:** str
-**Returns**: JSON
+- **Accessed by:** front-end
+- **Arguments:** str
+- **Returns**: JSON
 
   
 
