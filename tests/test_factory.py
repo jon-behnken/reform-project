@@ -1,10 +1,27 @@
-from reform import create_app
+import sys
 
-def test_config():
-    assert not create_app().testing
-    assert create_app({'TESTING': True}).testing
+sys.path.append("..")
+from src.reform import create_app
+
+import sys
+import pytest
+
+test_config = {}
 
 
-def test_hello(client):
-    response = client.get('/')
-    assert response.data == b'Hello, World!'
+@pytest.fixture
+def client():
+
+    app = create_app(
+        test_config={
+            "TESTING": True,
+        }
+    )
+
+    with app.test_client() as client:
+        yield client
+
+
+def test_about(client):
+    rv = client.get("/")
+    assert b"No" in rv.data
